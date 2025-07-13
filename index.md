@@ -18,28 +18,28 @@ transcribing and translating DNA code, with those occuring on either side of the
 
 ## 🗺️ Exhibition Rooms
 
-- [📚 Course Notes](/notes/)  
+- [📚 Course Notes](/notes.html)  
   Mathematical derivations, circuit theory, biophysics, machine learning. My scratchpad and archive.
 
-- [🧬 Papers & Extracts](/papers/)  
+- [🧬 Papers & Extracts](/papers.html)  
   Quotes and page scans from papers that shifted my worldview — annotated and contextualized.
   
-- [🏛️ Hall of Fame](/hall-of-fame/)  
+- [🏛️ Hall of Fame](/hall-of-fame.html)  
   Talks, debates, landmark papers, and theses that cracked something open in me — or in the world. Curated with awe.
   
-- [💡 Projects & Prototypes](/projects/)  
+- [💡 Projects & Prototypes](/projects.html)  
   Interactive simulations, physical builds, weird microcontroller hacks, neural network visualizers.
 
-- [📄 Digital CV](/cv/)  
+- [📄 Digital CV](/cv.html)  
   Background, past roles, skills, contact. Everything professional, but still personal.
 
-- [📂 Homework & Coursework](/homework/)  
+- [📂 Homework & Coursework](/homework.html)  
   Final submissions, visual walkthroughs, and things I submitted at 3:59am.
 
-- [💭 Ideas & Fragments](/ideas/)  
+- [💭 Ideas & Fragments](/ideas.html)  
   Raw ideas, sketches, wild concepts I’m not sure make sense — but they might.
 
-- [🖥️ Presentation Gallery](/presentations/)  
+- [🖥️ Presentation Gallery](/presentations.html)  
   Final project deliverables, slideshows, and talk decks — where research met the classroom and I tried to make it sing.
 ---
 
