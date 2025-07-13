@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Presentation Gallery
-description: A spoken talk to me is the essence of communication in science and engineering. Kwabena Boahen's presentations in neuromorphics inspired me to dedicate myself to the field. Here is some of my work (some slides are by teammates, if necessary for overall readability) trying to follow this tradition. Or just the ones I thought made my professors smile.
+description: A spoken talk to me is the essence of communication in science and engineering. Kwabena Boahen's presentations in neuromorphics inspired me to dedicate myself to the field. Here is some of my work (some slides are by teammates, where necessary for overall readability) trying to follow this tradition. Or just the ones I thought made my professors smile.
 ---
 
 Designing an Active Pixel Sensor- Intro to VLSI- 2nd year undergraduate
