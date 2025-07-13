@@ -39,6 +39,8 @@ transcribing and translating DNA code, with those occuring on either side of the
 - [💭 Ideas & Fragments](/ideas/)  
   Raw ideas, sketches, wild concepts I’m not sure make sense — but they might.
 
+- [🖥️ Presentation Gallery](/presentations/)  
+  Final project deliverables, slideshows, and talk decks — where research met the classroom and I tried to make it sing.
 ---
 
 ## 🧪 What is this?
