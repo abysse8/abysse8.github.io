@@ -2,3 +2,16 @@
 ---
 
 @import 'jekyll-theme-cayman';
+
+.presentation-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.presentation {
+  flex: 1 1 45%;
+  max-width: 600px;
+}
