@@ -1,3 +1,8 @@
+---
+---
+
+@import 'jekyll-theme-cayman';
+
 .button-for-employers {
   display: inline-block;
   margin-top: 1rem;
@@ -14,4 +19,12 @@
 
 .button-for-employers:hover {
   background-color: #444;
+}
+
+.slide-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2em 0;
 }
