@@ -4,13 +4,13 @@ title: Presentation Gallery
 description: A spoken talk to me is the essence of communication in science and engineering. Kwabena Boahen's presentations in neuromorphics inspired me to dedicate myself to the field. Here is some of my work (some slides are by teammates, where necessary for overall readability) trying to follow this tradition. Or just the ones I thought made my professors smile.
 ---
 
-### Designing an Active Pixel Sensor- Intro to VLSI- 2nd year undergraduate
-
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ1eQLy5LNwV8WSmcgDIhIFbkmyMhqLTna_OjGjk7kPifIxNMYsblR-lMBNdQK-h6EPYd6EJk4rfRop/pubembed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
 ### The Hydrodynamic Paradox- Part of a presentation on Liposomes for Drug Delivery Engineering- 3rd year undergraduate
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSrAmUc7HUqmBtJgCzkR0qgFYq202PhYwywG0Y9cVIU0TdfLzpy4UjoqD4ESAW98s3qTApwuMvbEGAT/pubembed?start=true&loop=true&delayms=15000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+### Designing an Active Pixel Sensor- Intro to VLSI- 2nd year undergraduate
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ1eQLy5LNwV8WSmcgDIhIFbkmyMhqLTna_OjGjk7kPifIxNMYsblR-lMBNdQK-h6EPYd6EJk4rfRop/pubembed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ### Project Proposal for Judges- Young Aurora- High school Senior year
 
