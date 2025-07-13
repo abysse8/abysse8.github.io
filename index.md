@@ -4,9 +4,10 @@ title: "J.G's Research Page 🧠: Learning Algorithm & Device Prototyping"
 ---
 
 # 🧠 This page will be a digital exhibit of everything I’ve built, learned, questioned, and half-dreamed.  
-You'll find simulations, handwritten notes, unfinished ideas, and ideas I haven't dared to test yet.
 
-<a href="/cv/" class="button-for-employers">👔 For Employers</a>
+<div class="center-button">
+  <a href="/cv/" class="big-button">👔 For Employers</a>
+</div>
 
 The core of my research revolves around excitable cells and how they build to interact 3 types of chemistries: those occurring in the cell nucleus, 
 transcribing and translating DNA code, with those occuring on either side of the membrane's border. I believe we are on the brink of a novel learning algorithm, potentially performing better than batched backpropagation, used in ChatGPT and essentially all of the state-of-the-art learning models. The mode of operation of DNA transcription, which seems linear and well-normalized (this need to be stated more carefully), gives a hint that the current theory in signal processing (Fourier, Lagrange, Nyquist) is a useful tool for this goal. However, group theory, wavelet analysis, and modern physics' statements of energy conservation and hydrodynamic interactions, have a place to be found in the unified theory of the Microscopic and the Ensemble. I want to understand both!
