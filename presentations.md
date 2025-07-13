@@ -6,7 +6,7 @@ description: A spoken talk to me is the essence of communication in science and 
 
 Designing an Active Pixel Sensor- Intro to VLSI- 2nd year undergraduate
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQho26rGwFDi9-RalmKxZC3IMgnaEfEz8QWdML8LPIPCIjKXDLkzdzlGJheWTmbrBMAJd7aQz_ef8LV/pubembed?start=false&loop=false&delayms=15000" frameborder="0" width="1920" height="1109" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQho26rGwFDi9-RalmKxZC3IMgnaEfEz8QWdML8LPIPCIjKXDLkzdzlGJheWTmbrBMAJd7aQz_ef8LV/pubembed?start=true&loop=true&delayms=15000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 Investigation of C Elegans' connectome- Intro to Connectomics- 1st year undegraduate
 
