@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "🧠 J's Neuromorphic Learning Research Page"
+title: "J.G's Research Page 🧠: Learning Algorithm & Device Prototyping"
 ---
 
 # 🧠 This is a digital exhibit of everything I’ve built, learned, questioned, and half-dreamed.  
