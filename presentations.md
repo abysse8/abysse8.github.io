@@ -5,7 +5,7 @@ description: A spoken talk to me is the essence of communication in science and 
 ---
 
 Designing an Active Pixel Sensor- Intro to VLSI- 2nd year undergraduate
-https://docs.google.com/presentation/d/e/2PACX-1vQho26rGwFDi9-RalmKxZC3IMgnaEfEz8QWdML8LPIPCIjKXDLkzdzlGJheWTmbrBMAJd7aQz_ef8LV/pub?start=false&loop=false&delayms=3000
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQho26rGwFDi9-RalmKxZC3IMgnaEfEz8QWdML8LPIPCIjKXDLkzdzlGJheWTmbrBMAJd7aQz_ef8LV/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="1920" height="1109" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 Investigation of C Elegans' connectome- Intro to Connectomics- 1st year undegraduate
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRb6YQ1zyonsuopZRL0IzE_-616y0XUoHqIRRWI0OXW0AZHHhw0HRgiseTBzIKQO3hy2A04K_fzC5Bq/pubembed?start=true&loop=true&delayms=1000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
@@ -29,5 +29,5 @@ Picard Iteration- Real Analysis- 2nd year undergraduate (the really good part of
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTBCdNrFXZTS-Z8ZC7lExAQ3qpQaqBraqwHieh4e4zJ_0hi1hNZY5PdkTRwUxT6kE8D5jOrCQzKg5Yr/pubembed?start=true&loop=true&delayms=15000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 Symbolism of Water in AfAm literature- African-American Environmental Thought- 1st year undergraduate
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQho26rGwFDi9-RalmKxZC3IMgnaEfEz8QWdML8LPIPCIjKXDLkzdzlGJheWTmbrBMAJd7aQz_ef8LV/pubembed?start=true&loop=true&delayms=2000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTXuIfRqsqvN4TIxdLfBEI66WbwtdvyBBlUDCjC3PINkNzzxoNiy7xkCZuPw-nrb9xaHYvStWoAloTN/pubembed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
