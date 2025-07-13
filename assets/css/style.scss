@@ -2,29 +2,3 @@
 ---
 
 @import 'jekyll-theme-cayman';
-
-.button-for-employers {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6em 1.2em;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #222;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-  transition: background-color 0.2s ease;
-}
-
-.button-for-employers:hover {
-  background-color: #444;
-}
-
-.slide-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin: 2em 0;
-}
