@@ -3,6 +3,23 @@ layout: default
 title: "J.G's Research Page: Learning Algorithm & Device Prototyping"
 ---
 
+<video autoplay muted loop id="bgvideo" playsinline>
+  <source src="/assets/scrolling-terminal.webm" type="video/webm">
+</video>
+
+<style>
+  #bgvideo {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+</style>
+
+<div class="content">
+  <!-- Your usual site markup -->
+</div>
 # 🧠 This page will be a digital exhibit of everything I’ve built, learned, questioned, and half-dreamed.  
 
 <div class="center-button">
