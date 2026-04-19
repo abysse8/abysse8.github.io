@@ -20,7 +20,7 @@ A mobile-to-cloud automation suite that transforms job offers into tailored engi
 * **Key Innovation**: Solved non-deterministic AI output issues using Regex splitting within iOS Shortcuts.
 * **Outcome**: Reduced resume tailoring time from 20 minutes to 30 seconds.
 
-[View Source Code](https://github.com/yourusername/CoverGemini) | [Watch Demo Video](#)
+[View Source Code](https://github.com/abysse8/CoverGemini) | [Watch Demo Video](#)
 
 ---
 
