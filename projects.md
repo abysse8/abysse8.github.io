@@ -2,7 +2,7 @@
 ---
 layout: page
 title: Projects
-permalink: /projects/
+permalink: /projects.html
 ---
 
 # Technical Portfolio
