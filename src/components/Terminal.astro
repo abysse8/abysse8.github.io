@@ -1,0 +1,63 @@
+---
+// Adapted from Magic UI's <Terminal /> (magicui.design), rebuilt as a zero-
+// dependency Astro island: the typing loop is ~30 lines of vanilla JS in a
+// module script, so the page ships no framework runtime. Decorative — aria-hidden;
+// its facts are restated as real text in the proof strip.
+import { terminalScript } from "../config/site";
+---
+
+<div
+  aria-hidden="true"
+  class="overflow-hidden rounded-[10px] border border-border bg-surface shadow-[0_24px_60px_-24px_rgba(0,0,0,0.7)]"
+>
+  <div class="flex items-center gap-1.5 border-b border-border px-3.5 py-2.5">
+    <span class="size-2.5 rounded-full bg-border-strong"></span>
+    <span class="size-2.5 rounded-full bg-border-strong"></span>
+    <span class="size-2.5 rounded-full bg-border-strong"></span>
+    <span class="mx-auto font-mono text-[0.7rem] text-faint">abysse8@lab — zsh</span>
+  </div>
+  <pre
+    id="term-body"
+    class="m-0 min-h-60 whitespace-pre-wrap break-words p-4 font-mono text-[0.78rem] leading-[1.75] text-muted"
+  ><span id="term-cursor" class="-mb-0.5 inline-block h-3.5 w-[7px] bg-accent align-[-2px]"></span></pre>
+</div>
+
+<script is:inline define:vars={{ steps: terminalScript }}>
+  const CLASS = {
+    prompt: "color:var(--color-accent)",
+    cmd: "color:var(--color-foreground)",
+    out: "color:var(--color-faint)",
+    ok: "color:var(--color-ok)",
+  };
+  const term = document.getElementById("term-body");
+  const cursor = document.getElementById("term-cursor");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduced) cursor.style.animation = "blink 1.1s steps(1) infinite";
+
+  function put(text, kind) {
+    const s = document.createElement("span");
+    s.style.cssText = CLASS[kind] || "";
+    s.textContent = text;
+    term.insertBefore(s, cursor);
+  }
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  (async () => {
+    if (reduced) {
+      for (const step of steps) put(step.text, step.kind);
+      return;
+    }
+    for (const step of steps) {
+      if (step.kind === "cmd") {
+        for (const ch of step.text) {
+          put(ch, step.kind);
+          await sleep(26 + Math.random() * 30);
+        }
+      } else {
+        put(step.text, step.kind);
+        await sleep(350);
+      }
+    }
+  })();
+</script>

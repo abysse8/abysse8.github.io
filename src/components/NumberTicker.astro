@@ -1,0 +1,52 @@
+---
+// Magic UI's <NumberTicker /> (magicui.design), rebuilt vanilla: counts up once
+// when first visible, tabular-nums so layout never shifts, instant under reduced
+// motion. Non-numeric prefixes/suffixes (e.g. "20 min → ", " ms") render as-is.
+interface Props {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+}
+const { value, prefix = "", suffix = "" } = Astro.props;
+---
+
+<span class="ticker font-mono tabular-nums tracking-tight" data-value={value} data-prefix={prefix} data-suffix={suffix}
+  >{prefix}0{suffix}</span
+>
+
+<script is:inline>
+  (() => {
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // This script ships once per component instance; claim elements synchronously
+    // with data-init so later copies don't attach duplicate observers.
+    const els = document.querySelectorAll(".ticker:not([data-init])");
+    const render = (el, n) =>
+      (el.textContent = `${el.dataset.prefix}${n}${el.dataset.suffix}`);
+
+    els.forEach((el) => {
+      el.dataset.init = "1";
+      const target = Number(el.dataset.value);
+      if (reduced) {
+        render(el, target);
+        return;
+      }
+      const io = new IntersectionObserver(
+        ([e]) => {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          el.dataset.done = "1";
+          const t0 = performance.now();
+          const dur = 900;
+          const tick = (t) => {
+            const p = Math.min(1, (t - t0) / dur);
+            render(el, Math.round((1 - Math.pow(1 - p, 3)) * target));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        },
+        { threshold: 0.5 },
+      );
+      io.observe(el);
+    });
+  })();
+</script>

@@ -1,0 +1,90 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../config/site";
+
+// Documents live in public/assets/docs/ (sourced from the CoverGemini repo).
+const docs = [
+  {
+    label: "Curriculum Vitae",
+    file: "/assets/docs/CV.pdf",
+    blurb: "Embedded systems, firmware, and applied-AI engineering — roles, skills, and contact.",
+  },
+  {
+    label: "Cover Letter",
+    file: "/assets/docs/cover-letter.pdf",
+    blurb: "Why I build at the intersection of hardware and learning algorithms.",
+  },
+];
+---
+
+<Base title="Digital CV — abysse8" description="Julien G. — embedded systems and applied AI engineer. CV and cover letter.">
+  <div class="mx-auto max-w-[1100px] px-6 pt-24">
+    <header class="mb-12 max-w-[60ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">For employers</p>
+      <h1 class="mt-3 mb-4 text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-[-0.025em] text-balance">
+        Digital CV
+      </h1>
+      <p class="text-[1.05rem] text-muted">
+        I build systems where firmware meets learning algorithms — reverse-engineering industrial bus
+        protocols, closing real-time control loops, and wiring AI pipelines to physical hardware.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={`mailto:${site.email}`}
+          class="inline-flex items-center gap-2 rounded-lg bg-foreground px-4.5 py-2.5 text-sm font-medium text-bg transition-opacity hover:opacity-85"
+        >
+          {site.email}
+        </a>
+        <a
+          href={site.github}
+          class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4.5 py-2.5 text-sm font-medium transition-colors hover:border-faint hover:bg-surface"
+        >
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <div class="grid gap-8">
+      {
+        docs.map((doc) => (
+          <section class="rounded-xl border border-border bg-surface p-6">
+            <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 class="text-[1.1rem] font-semibold tracking-tight">{doc.label}</h2>
+                <p class="mt-1 text-sm text-muted">{doc.blurb}</p>
+              </div>
+              <div class="flex gap-2">
+                <a
+                  href={doc.file}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-1.5 rounded-lg border border-border-strong px-3.5 py-2 text-sm font-medium transition-colors hover:border-faint hover:bg-bg"
+                >
+                  Open ↗
+                </a>
+                <a
+                  href={doc.file}
+                  download
+                  class="inline-flex items-center gap-1.5 rounded-lg bg-foreground px-3.5 py-2 text-sm font-medium text-bg transition-opacity hover:opacity-85"
+                >
+                  Download PDF
+                </a>
+              </div>
+            </div>
+            {/* Inline preview on wide screens; the buttons above are the reliable path on mobile. */}
+            <object
+              data={doc.file}
+              type="application/pdf"
+              class="hidden h-[80vh] w-full rounded-lg border border-border bg-bg md:block"
+              aria-label={`${doc.label} preview`}
+            >
+              <p class="p-4 text-sm text-muted">
+                Preview unavailable — use “Download PDF” above.
+              </p>
+            </object>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</Base>

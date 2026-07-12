@@ -1,0 +1,15 @@
+# Astro
+dist/
+.astro/
+node_modules/
+
+# Pipeline — raw chats and intermediate data NEVER enter git (privacy).
+pipeline/data/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+*.log

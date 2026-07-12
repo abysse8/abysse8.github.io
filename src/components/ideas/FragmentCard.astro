@@ -1,0 +1,62 @@
+---
+// Hairline-border + hover treatment borrowed from BentoCard.astro (REDESIGN §2).
+// Static, zero JS. The verbatim source lives in a native <details> — on-brand
+// terminal disclosure, keyboard-accessible for free.
+import StatusBadge from "./StatusBadge.astro";
+import { render, type CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"ideas">;
+}
+const { entry } = Astro.props;
+const { title, date, tags, status, sources } = entry.data;
+const { Content } = await render(entry);
+
+const fmtDate = date.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
+const kindLabel: Record<string, string> = {
+  chatgpt: "ChatGPT",
+  claude: "Claude",
+  codex: "Codex",
+  "claude-code": "Claude Code",
+  manual: "Note",
+};
+const quoted = sources.find((s) => s.quote);
+---
+
+<article
+  class="fragment-card mb-4 break-inside-avoid rounded-xl border border-border bg-surface p-6 transition-colors hover:border-border-strong"
+  data-tags={tags.join(" ")}
+>
+  <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.72rem] text-faint">
+    <time datetime={date.toISOString()}>{fmtDate}</time>
+    <span aria-hidden="true">·</span>
+    <StatusBadge status={status} />
+  </div>
+
+  <h3 class="mb-2 text-[1.05rem] font-semibold tracking-[-0.01em] text-balance">{title}</h3>
+
+  <div class="prose-fragment text-[0.92rem] leading-relaxed text-muted">
+    <Content />
+  </div>
+
+  <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tags">
+    {
+      tags.map((t) => (
+        <li class="rounded-full border border-border px-2.5 py-0.5 font-mono text-[0.68rem] text-faint">{t}</li>
+      ))
+    }
+  </ul>
+
+  {
+    quoted && (
+      <details class="mt-4 border-t border-border pt-3">
+        <summary class="cursor-pointer font-mono text-[0.7rem] text-faint transition-colors hover:text-accent">
+          source · {kindLabel[quoted.kind] ?? quoted.kind}
+        </summary>
+        <blockquote class="mt-2 border-l-2 border-accent/50 pl-3 font-mono text-[0.78rem] leading-relaxed text-faint">
+          {quoted.quote}
+        </blockquote>
+      </details>
+    )
+  }
+</article>
