@@ -1,0 +1,97 @@
+---
+import Base from "../../layouts/Base.astro";
+import FragmentCard from "../../components/ideas/FragmentCard.astro";
+import { getCollection } from "astro:content";
+import "katex/dist/katex.min.css";
+
+// Drafts never build. getCollection filters them out at the source (REDESIGN §3).
+const fragments = (await getCollection("ideas", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const allTags = [...new Set(fragments.flatMap((f) => f.data.tags))].sort();
+---
+
+<Base
+  title="Ideas & Fragments — abysse8"
+  description="Fragments recovered from a few thousand conversations with machines — hypotheses, cross-domain connections, half-dreamed research directions."
+>
+  <div class="mx-auto max-w-[1100px] px-6 pt-24">
+    <header class="mb-12 max-w-[60ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Room 07 — Ideas &amp; Fragments</p>
+      <h1 class="mt-3 mb-4 text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-[-0.025em] text-balance">
+        Fragments, recovered.
+      </h1>
+      <p class="text-[1.05rem] text-muted">
+        Sparks pulled from a few thousand conversations with machines — hypotheses, cross-domain connections, and
+        half-dreamed research directions. Some are wrong. A few might not be.
+      </p>
+    </header>
+
+    {
+      allTags.length > 0 && (
+        <div id="tag-filter" class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter by tag">
+          <button
+            type="button"
+            data-tag="__all__"
+            class="tag-btn rounded-full border border-accent px-3 py-1 font-mono text-[0.72rem] text-accent"
+            aria-pressed="true"
+          >
+            all
+          </button>
+          {allTags.map((t) => (
+            <button
+              type="button"
+              data-tag={t}
+              class="tag-btn rounded-full border border-border px-3 py-1 font-mono text-[0.72rem] text-faint transition-colors hover:border-border-strong hover:text-foreground"
+              aria-pressed="false"
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      fragments.length === 0 ? (
+        <p class="rounded-xl border border-dashed border-border bg-surface p-8 text-center font-mono text-sm text-faint">
+          The curation pass hasn't published anything yet. Fragments are drafted, reviewed by a human, then released
+          one at a time.
+        </p>
+      ) : (
+        <div id="fragment-list" class="min-[768px]:columns-2 min-[768px]:gap-4">
+          {fragments.map((entry) => (
+            <FragmentCard entry={entry} />
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <script>
+    // Progressive enhancement: with JS off, every card is visible and no filter renders.
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".tag-btn");
+    const cards = document.querySelectorAll<HTMLElement>(".fragment-card");
+    const activeCls = ["border-accent", "text-accent"];
+    const idleCls = ["border-border", "text-faint"];
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tag = btn.dataset.tag!;
+        buttons.forEach((b) => {
+          const on = b === btn;
+          b.setAttribute("aria-pressed", String(on));
+          b.classList.toggle(activeCls[0], on);
+          b.classList.toggle(activeCls[1], on);
+          b.classList.toggle(idleCls[0], !on);
+          b.classList.toggle(idleCls[1], !on);
+        });
+        cards.forEach((card) => {
+          const tags = (card.dataset.tags ?? "").split(" ");
+          card.style.display = tag === "__all__" || tags.includes(tag) ? "" : "none";
+        });
+      });
+    });
+  </script>
+</Base>

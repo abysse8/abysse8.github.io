@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import { site } from "../config/site";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Embedded systems × applied AI — firmware, protocol archaeology, control theory, and learning algorithms." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-sm"
+    >
+      Skip to content
+    </a>
+
+    <header class="sticky top-0 z-50 border-b border-border bg-bg/70 backdrop-blur-md">
+      <div class="mx-auto flex h-14 max-w-[1100px] items-center justify-between px-6">
+        <a href="/" class="font-mono text-sm"><span class="text-accent">~/</span>{site.handle}</a>
+        <nav class="flex items-center gap-6" aria-label="Main">
+          <a href="/#work" class="hidden text-sm text-muted transition-colors hover:text-foreground sm:block">Work</a>
+          <a href="/#research" class="hidden text-sm text-muted transition-colors hover:text-foreground sm:block">Research</a>
+          <a href="/#exhibits" class="hidden text-sm text-muted transition-colors hover:text-foreground sm:block">Exhibits</a>
+          <a
+            href="/cv/"
+            class="rounded-md bg-foreground px-3.5 py-1.5 text-sm font-medium text-bg transition-opacity hover:opacity-85"
+          >
+            For Employers
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="mt-32 border-t border-border py-12">
+      <div class="mx-auto flex max-w-[1100px] flex-wrap items-center justify-between gap-6 px-6">
+        <p class="font-mono text-xs text-faint">
+          ~/{site.handle} · powered by caffeine, curiosity, and occasional chaos
+        </p>
+        <div class="flex gap-6">
+          <a href={site.github} class="text-sm text-muted hover:text-foreground">GitHub</a>
+          <a href="/projects/" class="text-sm text-muted hover:text-foreground">Projects</a>
+          <a href="/cv/" class="text-sm text-muted hover:text-foreground">CV</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll reveals — reveal once at 12% visibility. CSS handles reduced motion.
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal:not(.in)").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

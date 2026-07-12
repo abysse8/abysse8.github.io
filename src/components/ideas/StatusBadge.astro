@@ -1,0 +1,18 @@
+---
+// spark = hollow dot, growing = half, mature = filled amber. Reuses --accent
+// sparingly (REDESIGN §8, ≤5% of viewport). Label is text so it survives no-CSS.
+interface Props {
+  status: "spark" | "growing" | "mature";
+}
+const { status } = Astro.props;
+const dot = {
+  spark: "border border-accent bg-transparent",
+  growing: "border border-accent bg-[linear-gradient(90deg,var(--color-accent)_50%,transparent_50%)]",
+  mature: "bg-accent",
+}[status];
+---
+
+<span class="inline-flex items-center gap-1.5" title={`Status: ${status}`}>
+  <span class={`inline-block size-2 rounded-full ${dot}`} aria-hidden="true"></span>
+  <span class="font-mono text-[0.68rem] uppercase tracking-[0.06em] text-faint">{status}</span>
+</span>

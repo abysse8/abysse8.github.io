@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Ported from the Jekyll presentations page. Each embed keeps its accessible title.
+const decks = [
+  { title: "The Hydrodynamic Paradox — Liposomes for Drug Delivery Engineering", src: "https://docs.google.com/presentation/d/e/2PACX-1vSrAmUc7HUqmBtJgCzkR0qgFYq202PhYwywG0Y9cVIU0TdfLzpy4UjoqD4ESAW98s3qTApwuMvbEGAT/pubembed?start=true&loop=true&delayms=15000" },
+  { title: "Designing an Active Pixel Sensor — Intro to VLSI", src: "https://docs.google.com/presentation/d/e/2PACX-1vQ1eQLy5LNwV8WSmcgDIhIFbkmyMhqLTna_OjGjk7kPifIxNMYsblR-lMBNdQK-h6EPYd6EJk4rfRop/pubembed?start=true&loop=true&delayms=3000" },
+  { title: "Project Proposal for Judges — Young Aurora", src: "https://docs.google.com/presentation/d/e/2PACX-1vTmCUDIAeX6bp-053JbIZ9p_4Fv34K5V4zut4AmQaiedCzV980ZXCYNYXrEKbsZfCdbeqRVSaW31Fi3/pubembed?start=true&loop=true&delayms=15000" },
+  { title: "Designing a Cochlear Implant — Intro to Neural Devices", src: "https://docs.google.com/presentation/d/e/2PACX-1vRi1ca6VnUrsAb8HqgwwZ8Po5vV7Y9_tzKL54py5P15EjlcGF2j0FkyIz6PW0IZA758VhHypCwvcQpE/pubembed?start=true&loop=true&delayms=15000" },
+  { title: "Investigation of C. Elegans' Connectome — Intro to Connectomics", src: "https://docs.google.com/presentation/d/e/2PACX-1vRb6YQ1zyonsuopZRL0IzE_-616y0XUoHqIRRWI0OXW0AZHHhw0HRgiseTBzIKQO3hy2A04K_fzC5Bq/pubembed?start=true&loop=true&delayms=15000" },
+  { title: "Business Plan — Josephine Tine's ART Pesoung", src: "https://docs.google.com/presentation/d/e/2PACX-1vRfFvI8ax9oN0DEMUUhOf2A8_riGdmLDrIOozsIHMeZ7Yjzhdzzmz93481l32i7mu6n0oVVIxMNqn4o/pubembed?start=true&loop=true&delayms=15000" },
+  { title: "Presentation to Investors — Josephine Tine's ART Pesoung", src: "https://docs.google.com/presentation/d/e/2PACX-1vTXjAFiP6tfA8UAVRBeim2pjTjsEftODyIZa31O04RiMlTpUDhxCr7Nx7Nx0joz9sBULCeq0wB6oWsv/pubembed?start=true&loop=true&delayms=15000" },
+  { title: "Picard Iteration — Real Analysis", src: "https://docs.google.com/presentation/d/e/2PACX-1vTBCdNrFXZTS-Z8ZC7lExAQ3qpQaqBraqwHieh4e4zJ_0hi1hNZY5PdkTRwUxT6kE8D5jOrCQzKg5Yr/pubembed?start=true&loop=true&delayms=15000" },
+  { title: "Symbolism of Water in AfAm Literature — African-American Environmental Thought", src: "https://docs.google.com/presentation/d/e/2PACX-1vTXuIfRqsqvN4TIxdLfBEI66WbwtdvyBBlUDCjC3PINkNzzxoNiy7xkCZuPw-nrb9xaHYvStWoAloTN/pubembed?start=true&loop=true&delayms=3000" },
+];
+---
+
+<Base title="Presentation Gallery — abysse8" description="Talk decks where research met the classroom — neuromorphics, VLSI, neural devices, and more.">
+  <div class="mx-auto max-w-[1100px] px-6 pt-24">
+    <header class="mb-12 max-w-[62ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Room 05 — Presentation Gallery</p>
+      <h1 class="mt-3 mb-4 text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-[-0.025em] text-balance">
+        Where research met the classroom.
+      </h1>
+      <p class="text-[1.05rem] text-muted">
+        A spoken talk is the essence of communication in science and engineering — Kwabena Boahen's
+        neuromorphic lectures are why I chose the field. Some of these decks include teammates' slides
+        where that made the whole read better.
+      </p>
+    </header>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      {
+        decks.map((deck) => (
+          <figure class="rounded-xl border border-border bg-surface p-4">
+            <h2 class="mb-3 text-[0.95rem] font-semibold tracking-tight text-balance">{deck.title}</h2>
+            <div class="aspect-video w-full overflow-hidden rounded-lg border border-border bg-bg">
+              <iframe
+                src={deck.src}
+                title={deck.title}
+                class="h-full w-full"
+                frameborder="0"
+                loading="lazy"
+                allowfullscreen
+              />
+            </div>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</Base>
