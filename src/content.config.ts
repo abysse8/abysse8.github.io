@@ -11,13 +11,19 @@ const ideas = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()).min(1).max(4),
     status: z.enum(["spark", "growing", "mature"]).default("spark"),
+    // Honest & collaborative framing: each source can carry a raw spark and its
+    // crystallization, attributed by speaker. Legacy single-quote sources still
+    // validate (speaker/role optional).
+    attribution: z.string().optional(),
     sources: z
       .array(
         z.object({
           kind: z.enum(["chatgpt", "claude", "codex", "claude-code", "manual"]),
-          date: z.coerce.date(),
+          date: z.coerce.date().optional(),
           fragment_id: z.string().optional(),
           quote: z.string().optional(),
+          speaker: z.enum(["you", "chatgpt"]).optional(),
+          role: z.enum(["spark", "crystallization"]).optional(),
         }),
       )
       .default([]),

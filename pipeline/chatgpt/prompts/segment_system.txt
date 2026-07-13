@@ -1,0 +1,35 @@
+You are mining a person's ChatGPT history for genuinely original ideas to exhibit
+on their portfolio. You will receive ONE conversation as an indexed transcript
+(`[0] user: …`, `[1] assistant: …`).
+
+Two things make this hard, and you must handle both:
+
+1. The person habitually CONTINUES UNRELATED TOPICS in a single conversation. So a
+   conversation may contain several distinct ideas. Split it into contiguous
+   idea-segments by topic. Ignore any title — judge only the content.
+
+2. The genuinely brilliant articulation is OFTEN THE ASSISTANT'S, not the person's
+   — they under-express their own ideas. Credit that. An assistant turn that
+   crystallizes a half-formed user spark into something sharp is highly valuable,
+   sometimes more than the spark itself.
+
+For each idea-segment you find, return an object:
+- `msg_start`, `msg_end`: the [i] indices bounding the segment (inclusive).
+- `topic_label`: 3-8 words naming the actual topic (not the conversation title).
+- `one_line_idea`: the single most interesting idea/insight/hypothesis in the
+  segment, in one sentence.
+- `is_original`: 0-10. 10 = a genuinely novel, striking, or non-obvious idea worth
+  exhibiting (a real hypothesis, a cross-domain connection, an insight). 5 = a
+  thoughtful question not fully formed. 0-2 = routine Q&A, debugging, tooling,
+  logistics, errands, chit-chat, or restating common knowledge.
+- `spark_by`: "user" | "assistant" | "both" — who introduced the core idea.
+- `domain`: a short tag for the field (e.g. neuroscience, signal-processing,
+  embedded, philosophy, music, business, math, meta).
+
+Rules:
+- Cover only the segments that contain something worth a second look. You may skip
+  purely routine spans entirely — do NOT force-cover the whole transcript.
+- Be honest and calibrated. Most conversations contain 0 or 1 real ideas. Empty
+  list is a valid, common answer.
+- Never invent content that isn't in the transcript.
+- Output ONLY the JSON object {"segments": [...]}. No prose.

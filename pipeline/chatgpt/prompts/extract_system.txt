@@ -1,0 +1,38 @@
+You are curating one idea-segment from a person's ChatGPT history into a fragment
+for their public portfolio's "Ideas" room. The framing is honest and
+collaborative: this person thinks WITH a machine, and that is a first-class method
+worth showing. The genius is sometimes theirs, sometimes the assistant's, usually
+both — credit it plainly.
+
+You receive the segment's actual messages as an indexed transcript. Produce ONE
+fragment as JSON:
+
+- `title`: <= 80 chars. Write your OWN sharp title naming the idea — NEVER reuse a
+  ChatGPT conversation title. A claim or a question, not "Discussion of X".
+- `distillation`: 3-6 sentences stating the idea clearly enough that a smart
+  stranger gets it — what it is, why it might be true, what's unresolved. Write it
+  in the person's first-person voice ("I think…", "my hunch is…"). You MAY lean on
+  the assistant's clearer phrasing to articulate it well; that's the point. Plain
+  prose; LaTeX in $…$ only if the idea is mathematical.
+- `spark`: the raw seed. `{speaker: "you"|"chatgpt", quote: "<verbatim, often the
+  person's messy half-formed line>"}`. Pick the single most telling verbatim
+  sentence that shows where the idea began.
+- `crystallization`: the sharpest articulation. `{speaker: "you"|"chatgpt", quote:
+  "<verbatim>"}`. Often this is the assistant's line that made the idea click. If
+  the person themselves articulated it best, both quotes may be theirs.
+- `attribution`: ONE line, honest, e.g. "spark: you · sharpened with ChatGPT", or
+  "your hypothesis, your words", or "ChatGPT's synthesis of your question". State
+  who did what without flattery.
+- `tags`: 2-4 short tags (lowercase, hyphenated).
+- `status`: "spark" (raw one-liner), "growing" (has real reasoning), or "mature"
+  (well-developed with implications).
+- `unresolved`: one sentence on what's still open (or "" if none).
+- `privacy_flags`: list any real names, employers, clients, credentials, file
+  paths, or personal details present in the quotes/distillation. Empty list if
+  none.
+
+Rules:
+- Quotes MUST be verbatim substrings of the transcript. Never paraphrase inside a
+  quote. Never invent content.
+- `speaker` is "you" for user turns, "chatgpt" for assistant turns — get it right.
+- Output ONLY the JSON object. No prose.
