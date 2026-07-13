@@ -3,6 +3,7 @@ title: "Wi-Fi access points in a bus depot are secretly a distributed sensor net
 date: 2026-06-04
 tags: ["embedded-networking", "edge-computing", "digital-twin", "rf-mesh"]
 status: growing
+domain: embedded
 draft: false
 attribution: "your question · ChatGPT's synthesis into concrete project directions"
 revisits: [2026-06-10]

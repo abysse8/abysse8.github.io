@@ -3,6 +3,7 @@ title: "Model the wiring as a typed spatial multigraph, not a diagram"
 date: 2026-06-09
 tags: ["graph-modeling", "data-schema", "networkx", "wiring"]
 status: growing
+domain: bio
 draft: false
 attribution: "spark: your one-line demand · schema and multigraph framing: ChatGPT"
 sources:

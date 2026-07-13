@@ -3,6 +3,7 @@ title: "Why transcription might be a wavelet, not a Fourier, process"
 date: 2025-07-02
 tags: [signal-processing, biology, learning-rules]
 status: spark
+domain: signal
 draft: false
 sources:
   - kind: claude

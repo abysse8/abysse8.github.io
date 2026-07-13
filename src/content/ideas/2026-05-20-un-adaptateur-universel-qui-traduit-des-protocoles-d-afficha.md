@@ -3,6 +3,7 @@ title: "Un adaptateur universel qui traduit des protocoles d'affichage voyageur 
 date: 2026-05-20
 tags: ["reverse-engineering", "rs485", "protocol-classification", "embedded"]
 status: mature
+domain: embedded
 draft: false
 attribution: "spark: you (observation terrain + vision projet) · structuré et articulé par ChatGPT"
 revisits: [2026-05-13, 2026-05-13, 2026-05-13, 2026-05-14, 2026-05-15, 2026-05-19, 2026-05-27]

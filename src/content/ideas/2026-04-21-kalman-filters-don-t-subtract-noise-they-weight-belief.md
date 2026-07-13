@@ -3,6 +3,7 @@ title: "Kalman filters don't subtract noise — they weight belief"
 date: 2026-04-21
 tags: ["kalman-filter", "estimation", "noise", "intuition"]
 status: growing
+domain: signal
 draft: false
 attribution: "your confusion, sharpened into insight by ChatGPT"
 sources:

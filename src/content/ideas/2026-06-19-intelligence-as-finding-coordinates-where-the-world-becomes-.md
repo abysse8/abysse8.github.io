@@ -3,6 +3,7 @@ title: "Intelligence as finding coordinates where the world becomes sparse"
 date: 2026-06-19
 tags: ["wavelets", "energy-based-learning", "information-theory", "compression"]
 status: growing
+domain: signal
 draft: false
 attribution: "spark: your hunch · formalized and sharpened by ChatGPT"
 revisits: [2023-11-12, 2025-09-26, 2025-10-15, 2026-04-11]

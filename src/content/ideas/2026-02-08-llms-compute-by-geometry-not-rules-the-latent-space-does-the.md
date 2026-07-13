@@ -3,6 +3,7 @@ title: "LLMs compute by geometry, not rules — the latent space does the work"
 date: 2026-02-08
 tags: ["llms", "hyperdimensional-computing", "embeddings", "geometry"]
 status: growing
+domain: math
 draft: false
 attribution: "your question · ChatGPT's synthesis mapping HD computing onto LLM internals"
 revisits: [2025-10-23]

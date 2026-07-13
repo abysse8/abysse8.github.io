@@ -3,6 +3,7 @@ title: "Timing is the information, not the rate"
 date: 2025-06-28
 tags: [neuromorphic, spiking, signal-processing]
 status: mature
+domain: neuro
 draft: false
 sources:
   - kind: chatgpt

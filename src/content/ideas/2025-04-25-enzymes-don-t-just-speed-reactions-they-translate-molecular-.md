@@ -3,6 +3,7 @@ title: "Enzymes don't just speed reactions — they translate molecular state in
 date: 2025-04-25
 tags: ["enzymes", "biochemistry", "information-theory", "thermodynamics"]
 status: growing
+domain: physics
 draft: false
 attribution: "your question, ChatGPT's synthesis"
 sources:

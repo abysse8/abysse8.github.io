@@ -3,6 +3,7 @@ title: "Teaching a photodiode array to be a camera by learning the inverse mappi
 date: 2026-05-18
 tags: ["embedded", "optics", "machine-learning", "sensors"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: you · sharpened and scoped with ChatGPT"
 sources:

@@ -3,6 +3,7 @@ title: "Repulsive van der Waals forces need the medium's dielectric constant to 
 date: 2025-03-06
 tags: ["van-der-waals", "lifshitz-theory", "dielectrics", "physics"]
 status: growing
+domain: physics
 draft: false
 attribution: "your question, sharpened with ChatGPT"
 sources:

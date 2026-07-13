@@ -3,6 +3,7 @@ title: "Liposome scale-up is a surface-area-to-volume control problem"
 date: 2025-03-03
 tags: ["liposomes", "scale-up", "mass-transfer", "self-assembly"]
 status: growing
+domain: bio
 draft: false
 attribution: "your hypothesis · confirmed and sharpened with ChatGPT"
 sources:

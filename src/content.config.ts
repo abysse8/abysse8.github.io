@@ -11,6 +11,7 @@ const ideas = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()).min(1).max(4),
     status: z.enum(["spark", "growing", "mature"]).default("spark"),
+    domain: z.string().optional(),
     // Honest & collaborative framing: each source can carry a raw spark and its
     // crystallization, attributed by speaker. Legacy single-quote sources still
     // validate (speaker/role optional).

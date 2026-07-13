@@ -3,6 +3,7 @@ title: "Live trading isn't rebalancing on a schedule — it's asking 'what shoul
 date: 2026-04-25
 tags: ["algorithmic-trading", "portfolio-optimization", "system-design", "backtesting"]
 status: mature
+domain: ai
 draft: false
 attribution: "spark: your pushback · architecture and constraints sharpened with ChatGPT"
 sources:

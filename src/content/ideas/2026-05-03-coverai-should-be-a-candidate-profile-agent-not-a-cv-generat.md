@@ -3,6 +3,7 @@ title: "CoverAI should be a candidate profile agent, not a CV generator"
 date: 2026-05-03
 tags: ["product-design", "autofill", "job-applications", "data-model"]
 status: mature
+domain: meta
 draft: false
 attribution: "spark: you · architecture and framing sharpened by ChatGPT"
 revisits: [2026-05-04]

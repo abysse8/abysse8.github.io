@@ -3,6 +3,7 @@ title: "Gravity is unrenormalizable because it quantizes the arena itself"
 date: 2025-06-30
 tags: ["quantum-gravity", "string-theory", "renormalization"]
 status: growing
+domain: physics
 draft: false
 attribution: "your question · ChatGPT's explanation"
 sources:

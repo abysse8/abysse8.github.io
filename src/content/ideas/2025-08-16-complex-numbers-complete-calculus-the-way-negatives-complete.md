@@ -3,6 +3,7 @@ title: "Complex numbers complete calculus the way negatives complete arithmetic"
 date: 2025-08-16
 tags: ["complex-analysis", "mathematical-analogy", "number-systems", "calculus"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: your analogy · sharpened and formalized with ChatGPT"
 revisits: [2025-07-29]

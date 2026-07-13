@@ -3,6 +3,7 @@ title: "Keep the ESP8266 as the brain, don't outsource the grow room to a closed
 date: 2026-04-25
 tags: ["embedded-systems", "home-automation", "diy-vs-buy", "esp8266"]
 status: growing
+domain: embedded
 draft: false
 attribution: "your project and constraints · architecture sharpened with ChatGPT"
 sources:

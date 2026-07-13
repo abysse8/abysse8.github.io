@@ -10,6 +10,47 @@ const fragments = (await getCollection("ideas", ({ data }) => !data.draft)).sort
 );
 
 const allTags = [...new Set(fragments.flatMap((f) => f.data.tags))].sort();
+
+// Domain → color (validated categorical palette on the dark surface; signal folds
+// into math, meta is the neutral "Other"). See dataviz validate_palette run.
+const DOMAIN_COLOR: Record<string, string> = {
+  embedded: "#c98500",
+  neuro: "#9085e9",
+  bio: "#e66767",
+  physics: "#3987e5",
+  math: "#d55181",
+  signal: "#d55181",
+  ai: "#199e70",
+  meta: "#8a8a93",
+};
+const LEGEND = [
+  ["embedded", "Embedded"],
+  ["neuro", "Neuro"],
+  ["bio", "Bio"],
+  ["physics", "Physics"],
+  ["math", "Math · Signal"],
+  ["ai", "AI / ML"],
+  ["meta", "Other"],
+];
+
+// Graph built at build time from existing frontmatter — no runtime cost, no infra.
+// Nodes = ideas (size by revisit count); edges = ideas that share a tag.
+const nodes = fragments.map((f) => ({
+  id: f.id,
+  title: f.data.title,
+  domain: f.data.domain ?? "meta",
+  val: 1 + (f.data.revisits?.length ?? 0),
+}));
+const links: { source: string; target: string }[] = [];
+for (let i = 0; i < fragments.length; i++) {
+  const a = new Set(fragments[i].data.tags);
+  for (let j = i + 1; j < fragments.length; j++) {
+    if (fragments[j].data.tags.some((t) => a.has(t))) {
+      links.push({ source: fragments[i].id, target: fragments[j].id });
+    }
+  }
+}
+const graph = { nodes, links, colors: DOMAIN_COLOR };
 ---
 
 <Base
@@ -17,7 +58,7 @@ const allTags = [...new Set(fragments.flatMap((f) => f.data.tags))].sort();
   description="Fragments recovered from a few thousand conversations with machines — hypotheses, cross-domain connections, half-dreamed research directions."
 >
   <div class="mx-auto max-w-[1100px] px-6 pt-24">
-    <header class="mb-12 max-w-[60ch]">
+    <header class="mb-8 max-w-[60ch]">
       <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Room 07 — Ideas &amp; Fragments</p>
       <h1 class="mt-3 mb-4 text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-[-0.025em] text-balance">
         Fragments, recovered.
@@ -28,24 +69,24 @@ const allTags = [...new Set(fragments.flatMap((f) => f.data.tags))].sort();
       </p>
     </header>
 
+    {/* View toggle — wall is the default + accessible reading surface; graph lazy-loads. */}
+    <div id="view-toggle" class="mb-6 inline-flex rounded-lg border border-border p-0.5 font-mono text-[0.72rem]" role="group" aria-label="View">
+      <button type="button" data-view="wall" aria-pressed="true" class="view-btn rounded-md bg-surface px-3 py-1.5 text-foreground">
+        ▤ Wall
+      </button>
+      <button type="button" data-view="graph" aria-pressed="false" class="view-btn rounded-md px-3 py-1.5 text-faint transition-colors hover:text-foreground">
+        ✳ Graph
+      </button>
+    </div>
+
     {
       allTags.length > 0 && (
         <div id="tag-filter" class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter by tag">
-          <button
-            type="button"
-            data-tag="__all__"
-            class="tag-btn rounded-full border border-accent px-3 py-1 font-mono text-[0.72rem] text-accent"
-            aria-pressed="true"
-          >
+          <button type="button" data-tag="__all__" class="tag-btn rounded-full border border-accent px-3 py-1 font-mono text-[0.72rem] text-accent" aria-pressed="true">
             all
           </button>
           {allTags.map((t) => (
-            <button
-              type="button"
-              data-tag={t}
-              class="tag-btn rounded-full border border-border px-3 py-1 font-mono text-[0.72rem] text-faint transition-colors hover:border-border-strong hover:text-foreground"
-              aria-pressed="false"
-            >
+            <button type="button" data-tag={t} class="tag-btn rounded-full border border-border px-3 py-1 font-mono text-[0.72rem] text-faint transition-colors hover:border-border-strong hover:text-foreground" aria-pressed="false">
               {t}
             </button>
           ))}
@@ -53,11 +94,26 @@ const allTags = [...new Set(fragments.flatMap((f) => f.data.tags))].sort();
       )
     }
 
+    {/* Graph view (hidden until toggled) */}
+    <div id="graph-view" class="mb-8 hidden">
+      <div id="idea-graph" class="h-[65vh] max-h-[620px] min-h-[420px] w-full overflow-hidden rounded-xl border border-border bg-bg"></div>
+      <ul class="mt-3 flex flex-wrap gap-x-4 gap-y-1.5" aria-label="Legend">
+        {
+          LEGEND.map(([key, label]) => (
+            <li class="flex items-center gap-1.5 font-mono text-[0.68rem] text-faint">
+              <span class="inline-block size-2.5 rounded-full" style={`background:${DOMAIN_COLOR[key]}`} />
+              {label}
+            </li>
+          ))
+        }
+        <li class="font-mono text-[0.68rem] text-faint">· dot size = times revisited</li>
+      </ul>
+    </div>
+
     {
       fragments.length === 0 ? (
         <p class="rounded-xl border border-dashed border-border bg-surface p-8 text-center font-mono text-sm text-faint">
-          The curation pass hasn't published anything yet. Fragments are drafted, reviewed by a human, then released
-          one at a time.
+          The curation pass hasn't published anything yet.
         </p>
       ) : (
         <div id="fragment-list" class="min-[768px]:columns-2 min-[768px]:gap-4">
@@ -69,23 +125,22 @@ const allTags = [...new Set(fragments.flatMap((f) => f.data.tags))].sort();
     }
   </div>
 
-  <script>
-    // Progressive enhancement: with JS off, every card is visible and no filter renders.
-    const buttons = document.querySelectorAll<HTMLButtonElement>(".tag-btn");
-    const cards = document.querySelectorAll<HTMLElement>(".fragment-card");
-    const activeCls = ["border-accent", "text-accent"];
-    const idleCls = ["border-border", "text-faint"];
+  <script type="application/json" id="graph-data" set:html={JSON.stringify(graph)}></script>
 
-    buttons.forEach((btn) => {
+  <script>
+    // ---- Tag filter (wall view) ----
+    const tagBtns = document.querySelectorAll<HTMLButtonElement>(".tag-btn");
+    const cards = document.querySelectorAll<HTMLElement>(".fragment-card");
+    tagBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const tag = btn.dataset.tag!;
-        buttons.forEach((b) => {
+        tagBtns.forEach((b) => {
           const on = b === btn;
           b.setAttribute("aria-pressed", String(on));
-          b.classList.toggle(activeCls[0], on);
-          b.classList.toggle(activeCls[1], on);
-          b.classList.toggle(idleCls[0], !on);
-          b.classList.toggle(idleCls[1], !on);
+          b.classList.toggle("border-accent", on);
+          b.classList.toggle("text-accent", on);
+          b.classList.toggle("border-border", !on);
+          b.classList.toggle("text-faint", !on);
         });
         cards.forEach((card) => {
           const tags = (card.dataset.tags ?? "").split(" ");
@@ -93,5 +148,63 @@ const allTags = [...new Set(fragments.flatMap((f) => f.data.tags))].sort();
         });
       });
     });
+
+    // ---- View toggle (wall / graph); force-graph loads on first graph view ----
+    const wall = document.getElementById("fragment-list")!;
+    const tagFilter = document.getElementById("tag-filter");
+    const graphView = document.getElementById("graph-view")!;
+    const graphEl = document.getElementById("idea-graph")!;
+    const viewBtns = document.querySelectorAll<HTMLButtonElement>(".view-btn");
+    let graphInited = false;
+    let g: any = null;
+
+    async function initGraph() {
+      if (graphInited) return;
+      graphInited = true;
+      const { default: ForceGraph } = await import("force-graph");
+      const data = JSON.parse(document.getElementById("graph-data")!.textContent!);
+      const colors = data.colors as Record<string, string>;
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      g = new ForceGraph(graphEl)
+        .graphData({ nodes: data.nodes, links: data.links })
+        .backgroundColor("rgba(0,0,0,0)")
+        .nodeId("id")
+        .nodeLabel((n: any) => n.title)
+        .nodeVal((n: any) => n.val)
+        .nodeRelSize(4)
+        .nodeColor((n: any) => colors[n.domain] ?? colors.meta)
+        .linkColor(() => "rgba(154,154,163,0.13)")
+        .linkWidth(1)
+        .onNodeClick((n: any) => {
+          setView("wall");
+          location.hash = n.id;
+        });
+
+      if (reduce) g.cooldownTicks(0);
+      const size = () => g.width(graphEl.clientWidth).height(graphEl.clientHeight);
+      size();
+      new ResizeObserver(size).observe(graphEl);
+      setTimeout(() => g.zoomToFit(400, 40), reduce ? 0 : 600);
+    }
+
+    function setView(view: string) {
+      const graph = view === "graph";
+      wall.classList.toggle("hidden", graph);
+      tagFilter?.classList.toggle("hidden", graph);
+      graphView.classList.toggle("hidden", !graph);
+      viewBtns.forEach((b) => {
+        const on = b.dataset.view === view;
+        b.setAttribute("aria-pressed", String(on));
+        b.classList.toggle("bg-surface", on);
+        b.classList.toggle("text-foreground", on);
+        b.classList.toggle("text-faint", !on);
+      });
+      if (graph) {
+        initGraph();
+        if (g) setTimeout(() => g.width(graphEl.clientWidth).height(graphEl.clientHeight), 0);
+      }
+    }
+    viewBtns.forEach((b) => b.addEventListener("click", () => setView(b.dataset.view!)));
   </script>
 </Base>

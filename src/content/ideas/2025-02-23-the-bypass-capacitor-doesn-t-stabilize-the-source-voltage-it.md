@@ -3,6 +3,7 @@ title: "The bypass capacitor doesn't stabilize the source voltage — it deliber
 date: 2025-02-23
 tags: ["analog-electronics", "common-source-amplifier", "bypass-capacitor", "negative-feedback"]
 status: growing
+domain: embedded
 draft: false
 attribution: "your misconception surfaced by asking for a critique · corrected and sharpened with ChatGPT"
 sources:

@@ -3,6 +3,7 @@ title: "Skip the spikes: estimate SNN activation with an interspike closeness sc
 date: 2023-11-13
 tags: ["spiking-neural-networks", "wavelets", "activation-estimation", "neuromorphic"]
 status: growing
+domain: neuro
 draft: false
 attribution: "your hypothesis, your words"
 sources:

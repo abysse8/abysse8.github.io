@@ -3,6 +3,7 @@ title: "A cable subcontractor survives by becoming a systems integrator, not by 
 date: 2026-05-11
 tags: ["industrial-systems", "business-strategy", "embedded-systems", "value-chain"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: your business problem, in your words · sharpened and structured with ChatGPT"
 sources:

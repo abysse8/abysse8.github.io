@@ -3,6 +3,7 @@ title: "The codon cube as a coordinate system"
 date: 2025-06-24
 tags: [biology, learning-rules]
 status: growing
+domain: bio
 draft: false
 sources:
   - kind: chatgpt

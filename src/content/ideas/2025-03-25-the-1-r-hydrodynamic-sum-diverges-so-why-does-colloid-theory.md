@@ -3,6 +3,7 @@ title: "The 1/r hydrodynamic sum diverges — so why does colloid theory still w
 date: 2025-03-25
 tags: ["hydrodynamics", "colloids", "many-body", "stokes-flow"]
 status: growing
+domain: physics
 draft: false
 attribution: "spark: your physical objection · resolution sharpened with ChatGPT"
 sources:

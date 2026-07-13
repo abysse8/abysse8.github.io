@@ -3,6 +3,7 @@ title: "Driving is a real-time control loop, not a complete-model planning probl
 date: 2026-06-16
 tags: ["driving", "control-systems", "mental-models", "attention"]
 status: growing
+domain: meta
 draft: false
 attribution: "spark: your question · reframe and analogy: ChatGPT"
 sources:

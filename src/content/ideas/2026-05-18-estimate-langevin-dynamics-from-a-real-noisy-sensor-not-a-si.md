@@ -3,6 +3,7 @@ title: "Estimate Langevin dynamics from a real noisy sensor, not a simulation"
 date: 2026-05-18
 tags: ["langevin-dynamics", "embedded-systems", "stochastic-modeling", "signal-processing"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: you · project design synthesized by ChatGPT"
 sources:

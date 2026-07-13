@@ -3,6 +3,7 @@ title: "Antidepressants don't boost mood — they destabilize the control loops 
 date: 2025-12-05
 tags: ["antidepressants", "neuroplasticity", "self-regulation", "mental-health"]
 status: growing
+domain: neuro
 draft: false
 attribution: "your question · ChatGPT's mechanistic reframe"
 sources:

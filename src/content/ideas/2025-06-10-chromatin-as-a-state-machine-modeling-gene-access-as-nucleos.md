@@ -3,6 +3,7 @@ title: "Chromatin as a state machine: modeling gene access as nucleosome states"
 date: 2025-06-10
 tags: ["chromatin", "computational-biology", "state-machine", "gene-regulation"]
 status: growing
+domain: bio
 draft: false
 attribution: "your paper and framing goal; ChatGPT's synthesis into a state-machine simulation model"
 sources:

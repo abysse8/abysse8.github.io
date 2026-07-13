@@ -3,6 +3,7 @@ title: "Is ATP consumption rate a computational signal the neuron reads, not jus
 date: 2025-06-21
 tags: ["neuroenergetics", "atp-signaling", "neural-computation", "cell-biology"]
 status: growing
+domain: neuro
 draft: false
 attribution: "your hypothesis · framed and evidenced by ChatGPT"
 revisits: [2025-06-12]

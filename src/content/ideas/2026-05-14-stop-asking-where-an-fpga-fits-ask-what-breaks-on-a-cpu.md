@@ -3,6 +3,7 @@ title: "Stop asking where an FPGA fits — ask what breaks on a CPU"
 date: 2026-05-14
 tags: ["fpga", "hardware-acceleration", "systems-design", "determinism"]
 status: growing
+domain: embedded
 draft: false
 attribution: "your intuition, reframed and sharpened by ChatGPT"
 sources:
