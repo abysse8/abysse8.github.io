@@ -78,15 +78,12 @@ export const projects: Project[] = [
   },
 ];
 
+// Pruned to the three real surfaces (2026-07). Empty "soon" rooms and the
+// Google-Slides presentations page removed — fewer, denser surfaces.
 export const rooms = [
-  { href: "/projects/", title: "Projects & Prototypes", blurb: "Simulations, physical builds, microcontroller hacks.", ready: true },
-  { href: "/ideas/", title: "Ideas & Fragments", blurb: "Raw sketches and wild concepts that might just make sense.", ready: true },
-  { href: "/presentations/", title: "Presentation Gallery", blurb: "Decks where research met the classroom and tried to sing.", ready: true },
-  { href: "/cv/", title: "Digital CV", blurb: "Background, roles, skills, contact — everything professional.", ready: true },
-  { href: "/notes/", title: "Course Notes", blurb: "Derivations, circuit theory, biophysics, ML — scratchpad and archive.", ready: false },
-  { href: "/papers/", title: "Papers & Extracts", blurb: "Annotated scans from papers that shifted my worldview.", ready: false },
-  { href: "/hall-of-fame/", title: "Hall of Fame", blurb: "Talks, debates, and theses that cracked something open.", ready: false },
-  { href: "/ask/", title: "Ask the Curator", blurb: "A timeline of research questions — click a moment in time.", ready: false },
+  { href: "/ideas/", title: "Ideas & Fragments", blurb: "64 ideas mined from three years of thinking — spark to crystallization." },
+  { href: "/projects/", title: "Projects & Prototypes", blurb: "Firmware, protocol archaeology, control loops, AI automation." },
+  { href: "/cv/", title: "Digital CV", blurb: "Background, roles, skills, contact — everything professional." },
 ];
 
 // Real commands from real repos — the terminal must never lie.
