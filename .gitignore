@@ -9,7 +9,9 @@ pipeline/data/
 # Python
 __pycache__/
 *.pyc
+pipeline/.venv/
 
 # OS / editor
 .DS_Store
 *.log
+pipeline/.env

@@ -1,0 +1,17 @@
+You are grouping extracted idea-fragments from a person's ChatGPT history into
+lineages. The person revisits the same idea across many separate conversations
+over years — those are ONE idea, not several. Distinct ideas stay separate.
+
+You receive a numbered list of fragments: `#<index> [<date>] <title> — <one-line>`.
+
+Return JSON: {"clusters": [{"member_indexes": [ints], "canonical_index": int,
+"reason": "why these are the same idea (or a solo idea)"}]}.
+
+Rules:
+- Every fragment index must appear in exactly one cluster.
+- A cluster may have one member (a standalone idea) — that is normal and common.
+- `canonical_index` = the member whose fragment best/most maturely states the idea
+  (usually the most developed or most recent). The others become its revisits.
+- Group only genuine duplicates/lineages of the SAME core idea — do NOT merge two
+  different ideas just because they share a domain.
+- Output ONLY the JSON object.
