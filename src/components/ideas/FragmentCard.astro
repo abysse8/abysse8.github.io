@@ -35,7 +35,8 @@ const revisitCount = revisits?.length ?? 0;
 ---
 
 <article
-  class="fragment-card mb-4 break-inside-avoid rounded-xl border border-border bg-surface p-6 transition-colors hover:border-border-strong"
+  id={entry.id}
+  class="fragment-card mb-4 scroll-mt-20 break-inside-avoid rounded-xl border border-border bg-surface p-6 transition-colors hover:border-border-strong target:border-accent"
   data-tags={tags.join(" ")}
 >
   <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.72rem] text-faint">

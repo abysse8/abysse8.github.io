@@ -1,0 +1,125 @@
+---
+// "Questions I keep returning to" — a shared time axis where each recurring
+// question is a track of dots (first spark → every return). Built from the
+// ideas collection's date + revisits; the long threads become visible as tracks
+// that stretch across years while shorter ones sit as bursts. Zero JS.
+import { getCollection } from "astro:content";
+
+const AXIS_START = new Date("2023-01-01").getTime();
+const AXIS_END = new Date("2026-08-01").getTime();
+const SPAN = AXIS_END - AXIS_START;
+const YEARS = [2023, 2024, 2025, 2026];
+const pct = (t: number) => Math.min(100, Math.max(0, ((t - AXIS_START) / SPAN) * 100));
+
+const all = await getCollection("ideas", ({ data }) => !data.draft);
+
+type Thread = {
+  id: string;
+  title: string;
+  status: string;
+  dates: number[]; // sorted unique ms
+  first: number;
+  last: number;
+  count: number;
+};
+
+const threads: Thread[] = all
+  .map((e) => {
+    const ds = [e.data.date, ...(e.data.revisits ?? [])].map((d) => d.getTime());
+    const uniq = [...new Set(ds)].sort((a, b) => a - b);
+    return {
+      id: e.id,
+      title: e.data.title,
+      status: e.data.status,
+      dates: uniq,
+      first: uniq[0],
+      last: uniq[uniq.length - 1],
+      count: uniq.length,
+    };
+  })
+  .filter((t) => t.count >= 2 && t.last - t.first > 150 * 864e5) // multi-month threads only
+  .sort((a, b) => b.last - b.first - (a.last - a.first))
+  .slice(0, 6);
+
+const yr = (ms: number) => new Date(ms).getFullYear();
+const statusDot: Record<string, string> = { spark: "opacity-50", growing: "opacity-80", mature: "opacity-100" };
+---
+
+<section id="threads" class="pt-24">
+  <div class="mx-auto max-w-[1100px] px-6">
+    <div class="reveal mb-12 max-w-[60ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Recurring questions</p>
+      <h2 class="mt-3 mb-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.02em] text-balance">
+        Questions I keep returning to.
+      </h2>
+      <p class="text-muted">
+        Some questions don't let go. These are the threads I've circled across three years — each dot a time I
+        came back to it, from first spark to latest return.
+      </p>
+    </div>
+
+    <div class="reveal">
+      {/* Year axis */}
+      <div class="mb-4 grid grid-cols-1 gap-x-6 min-[720px]:grid-cols-[minmax(0,1fr)_1.7fr]">
+        <div class="hidden min-[720px]:block"></div>
+        <div class="relative h-5 border-b border-border">
+          {
+            YEARS.map((y) => (
+              <span
+                class="absolute -bottom-0 -translate-x-1/2 font-mono text-[0.66rem] text-faint"
+                style={`left:${pct(new Date(`${y}-01-01`).getTime())}%`}
+              >
+                {y}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      {/* Threads */}
+      <ul class="flex flex-col divide-y divide-border border-b border-border">
+        {
+          threads.map((t) => (
+            <li>
+              <a
+                href={`/ideas#${t.id}`}
+                class="group grid grid-cols-1 items-center gap-x-6 gap-y-2 py-4 transition-colors hover:bg-surface min-[720px]:grid-cols-[minmax(0,1fr)_1.7fr]"
+              >
+                <div class="min-w-0">
+                  <p class="text-[0.95rem] font-medium tracking-[-0.01em] text-foreground group-hover:text-accent">
+                    {t.title}
+                  </p>
+                  <p class="mt-0.5 font-mono text-[0.68rem] text-faint">
+                    {t.count}× · {yr(t.first)}–{yr(t.last)} · {t.status}
+                  </p>
+                </div>
+                {/* Track */}
+                <div class="relative h-6" aria-hidden="true">
+                  <span
+                    class="absolute top-1/2 h-px -translate-y-1/2 bg-border-strong"
+                    style={`left:${pct(t.first)}%;width:${pct(t.last) - pct(t.first)}%`}
+                  />
+                  {t.dates.map((d, i) => (
+                    <span
+                      class={`absolute top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent ${
+                        i === t.dates.length - 1 ? `bg-accent ${statusDot[t.status]}` : "bg-bg"
+                      }`}
+                      style={`left:${pct(d)}%`}
+                    />
+                  ))}
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <a
+        href="/ideas/"
+        class="mt-8 inline-flex items-center gap-1.5 font-mono text-[0.82rem] text-accent hover:underline hover:underline-offset-4"
+      >
+        → See all {all.length} ideas
+      </a>
+    </div>
+  </div>
+</section>
