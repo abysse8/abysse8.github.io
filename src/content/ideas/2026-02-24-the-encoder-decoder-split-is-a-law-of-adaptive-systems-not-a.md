@@ -3,6 +3,7 @@ title: "The encoder-decoder split is a law of adaptive systems, not an engineeri
 date: 2026-02-24
 tags: ["autoencoders", "symmetry-breaking", "central-dogma", "representation-learning"]
 status: mature
+domain: ai
 draft: false
 attribution: "your framing and paper; ChatGPT's synthesis into the autoencoder analogy"
 revisits: [2025-05-02]

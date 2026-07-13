@@ -3,6 +3,7 @@ title: "From understanding life through science to defending it through action"
 date: 2025-11-05
 tags: ["career-transition", "narrative", "identity", "public-service"]
 status: growing
+domain: meta
 draft: false
 attribution: "your story and framing · scripted and sharpened by ChatGPT"
 revisits: [2026-04-17]

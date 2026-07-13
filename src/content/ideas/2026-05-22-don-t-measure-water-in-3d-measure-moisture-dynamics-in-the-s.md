@@ -3,6 +3,7 @@ title: "Don't measure water in 3D — measure moisture dynamics in the substrate
 date: 2026-05-22
 tags: ["sensor-networks", "soil-moisture", "diy-hardware", "data-modeling"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: your question · reframing and mechanical fix from ChatGPT"
 sources:

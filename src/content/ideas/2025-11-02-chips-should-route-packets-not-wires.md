@@ -3,6 +3,7 @@ title: "Chips should route packets, not wires"
 date: 2025-11-02
 tags: ["networks-on-chip", "computer-architecture", "interconnect"]
 status: growing
+domain: meta
 draft: false
 attribution: "your question · ChatGPT's explanation of the paper"
 sources:

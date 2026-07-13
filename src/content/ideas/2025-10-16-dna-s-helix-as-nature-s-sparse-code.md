@@ -3,6 +3,7 @@ title: "DNA's helix as nature's sparse code"
 date: 2025-10-16
 tags: ["information-geometry", "dna", "sparse-coding", "biology"]
 status: growing
+domain: math
 draft: false
 attribution: "spark: your cross-domain question · analogy developed by ChatGPT"
 sources:

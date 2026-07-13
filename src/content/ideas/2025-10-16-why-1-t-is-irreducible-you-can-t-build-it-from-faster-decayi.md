@@ -3,6 +3,7 @@ title: "Why 1/T is irreducible: you can't build it from faster-decaying powers"
 date: 2025-10-16
 tags: ["calculus", "logarithm", "liouvilles-theorem", "series-expansion"]
 status: growing
+domain: math
 draft: false
 attribution: "your hypothesis and the clever workaround attempt · disproved by ChatGPT's asymptotic argument"
 sources:

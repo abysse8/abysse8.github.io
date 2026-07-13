@@ -3,6 +3,7 @@ title: "Design mode and debug mode are opposite cognitive skills"
 date: 2026-05-26
 tags: ["debugging", "systems-thinking", "cognition", "engineering"]
 status: growing
+domain: meta
 draft: false
 attribution: "ChatGPT's synthesis, reflecting your systems-thinking tendency"
 sources:

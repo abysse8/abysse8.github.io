@@ -3,6 +3,7 @@ title: "Water is not a solvent but biology's coupling field"
 date: 2025-11-12
 tags: ["polymer-physics", "water", "biophysics", "correlations"]
 status: growing
+domain: physics
 draft: false
 attribution: "your question, sharpened into physics by ChatGPT"
 revisits: [2025-04-03, 2025-10-26, 2025-11-01]

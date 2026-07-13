@@ -3,6 +3,7 @@ title: "Understand the state machine and the 'random' embedded behavior stops lo
 date: 2026-06-17
 tags: ["embedded-systems", "state-machine", "systems-thinking", "reverse-engineering"]
 status: growing
+domain: embedded
 draft: false
 attribution: "your question · ChatGPT's synthesis and reframing"
 sources:

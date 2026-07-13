@@ -3,6 +3,7 @@ title: "Why not 0.1V logic? Noise margin is the whole game"
 date: 2026-05-15
 tags: ["electronics", "noise-margin", "embedded-systems", "signaling"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: your question · explained and sharpened by ChatGPT"
 sources:

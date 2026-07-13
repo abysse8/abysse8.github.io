@@ -3,6 +3,7 @@ title: "Learning doesn't need the true gradient — just positive correlation wi
 date: 2026-01-13
 tags: ["feedback-alignment", "backprop", "learning-dynamics", "gradient-descent"]
 status: mature
+domain: ai
 draft: false
 attribution: "your prompt to formalise · ChatGPT's derivation and punchline"
 revisits: [2025-05-02, 2025-07-13, 2026-04-11]

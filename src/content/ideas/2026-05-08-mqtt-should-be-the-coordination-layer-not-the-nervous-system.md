@@ -3,6 +3,7 @@ title: "MQTT should be the coordination layer, not the nervous system"
 date: 2026-05-08
 tags: ["distributed-systems", "mqtt", "industrial-control", "embedded"]
 status: mature
+domain: embedded
 draft: false
 attribution: "your project instinct, structured and sharpened by ChatGPT"
 revisits: [2026-04-26, 2026-04-27, 2026-05-15, 2026-05-15]

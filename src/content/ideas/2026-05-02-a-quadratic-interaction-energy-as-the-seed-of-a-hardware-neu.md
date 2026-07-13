@@ -3,6 +3,7 @@ title: "A quadratic interaction energy as the seed of a hardware neuron"
 date: 2026-05-02
 tags: ["fpga", "energy-based-models", "fixed-point", "neural-hardware"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: you (messy math intuition) · sharpened and formalized with ChatGPT"
 revisits: [2026-04-25, 2026-05-05]

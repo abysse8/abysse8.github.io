@@ -3,6 +3,7 @@ title: "Extent of reaction is a property of the balance, not the initial conditi
 date: 2025-03-06
 tags: ["reaction-engineering", "equilibrium", "extent-of-reaction", "chemical-intuition"]
 status: growing
+domain: physics
 draft: false
 attribution: "spark: you · failure mode pinned down by ChatGPT"
 sources:

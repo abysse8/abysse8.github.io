@@ -3,6 +3,7 @@ title: "Neurons as molecular learning systems: building AI in a DNA substrate"
 date: 2025-06-12
 tags: ["dna-computing", "neuroscience", "synthetic-biology", "molecular-ai"]
 status: growing
+domain: neuro
 draft: false
 attribution: "your goal and question · methodology and framing sharpened by ChatGPT"
 revisits: [2025-08-23, 2026-02-24, 2026-04-18]

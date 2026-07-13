@@ -3,6 +3,7 @@ title: "Optimization Is Thermodynamics: Gradient Descent as the Zero-Entropy Lim
 date: 2026-02-20
 tags: ["variational-inference", "free-energy", "gradient-descent", "information-geometry"]
 status: mature
+domain: math
 draft: false
 attribution: "spark: your discomfort and your words · derivation and framing sharpened with ChatGPT"
 revisits: [2025-06-02, 2026-02-08]

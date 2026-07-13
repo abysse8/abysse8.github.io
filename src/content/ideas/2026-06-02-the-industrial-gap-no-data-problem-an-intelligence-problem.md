@@ -3,6 +3,7 @@ title: "The industrial gap: no data problem, an intelligence problem"
 date: 2026-06-02
 tags: ["predictive-maintenance", "anomaly-detection", "embedded-ai", "industrial-iot"]
 status: growing
+domain: embedded
 draft: false
 attribution: "your instinct ('that's key'), sharpened and framed by ChatGPT"
 sources:

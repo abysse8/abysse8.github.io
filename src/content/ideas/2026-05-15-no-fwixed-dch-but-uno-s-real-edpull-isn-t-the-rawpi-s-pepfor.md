@@ -3,6 +3,7 @@ title: "No fwixed dCh:but Uno 's real edpull isn't the rawpi's pePform"
 date: 2026-05-15
 tags: ["embedded-ai", "hardware", "raspberry-pi", "arduino"]
 status: spark
+domain: embedded
 draft: false
 attribution: "spark: you · sharpened with ChatGPT"
 sources:

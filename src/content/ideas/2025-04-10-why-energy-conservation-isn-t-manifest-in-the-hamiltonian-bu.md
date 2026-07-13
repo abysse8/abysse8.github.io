@@ -3,6 +3,7 @@ title: "Why energy conservation isn't manifest in the Hamiltonian but momentum i
 date: 2025-04-10
 tags: ["physics", "field-theory", "noether", "stress-energy-tensor"]
 status: growing
+domain: physics
 draft: false
 attribution: "your question, ChatGPT's synthesis"
 revisits: [2025-07-06, 2025-07-06]

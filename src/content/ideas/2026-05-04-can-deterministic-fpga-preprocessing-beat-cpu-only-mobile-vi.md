@@ -3,6 +3,7 @@ title: "Can deterministic FPGA preprocessing beat CPU-only mobile visual-inertia
 date: 2026-05-04
 tags: ["fpga", "sensor-fusion", "edge-ai", "localization"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: your vision · reframed as a research question by ChatGPT"
 sources:

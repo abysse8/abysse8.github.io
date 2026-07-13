@@ -3,6 +3,7 @@ title: "State estimation and control come before the AI, not after"
 date: 2026-05-28
 tags: ["robotics", "state-estimation", "drones", "control-systems"]
 status: growing
+domain: meta
 draft: false
 attribution: "your question · ChatGPT's structured synthesis"
 sources:

@@ -3,6 +3,7 @@ title: "Reverse-engineering config embarquée: la clé USB comme source de véri
 date: 2026-06-13
 tags: ["reverse-engineering", "embedded-config", "firmware", "diff-binaire"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: you (l'observation terrain) · reformulé et cadré méthodiquement par ChatGPT"
 sources:

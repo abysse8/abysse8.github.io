@@ -3,6 +3,7 @@ title: "Document profiles, not hardcoded fields: a YAML control layer for enterp
 date: 2026-05-26
 tags: ["document-generation", "enterprise-software", "architecture", "yaml-config"]
 status: mature
+domain: ai
 draft: false
 attribution: "spark: you · architecture sharpened with ChatGPT"
 revisits: [2026-05-22, 2026-05-28, 2026-05-29, 2026-06-03]

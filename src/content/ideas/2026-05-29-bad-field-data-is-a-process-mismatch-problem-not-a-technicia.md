@@ -3,6 +3,7 @@ title: "Bad field data is a process-mismatch problem, not a technician-disciplin
 date: 2026-05-29
 tags: ["workflow-design", "process-vs-people", "data-capture", "field-operations"]
 status: growing
+domain: meta
 draft: false
 attribution: "spark: you · sharpened with ChatGPT"
 sources:

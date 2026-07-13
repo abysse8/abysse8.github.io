@@ -3,6 +3,7 @@ title: "You can't evolve toward 'interesting' until you formalize interesting"
 date: 2026-04-12
 tags: ["artificial-life", "fitness-functions", "emergence", "reward-hacking"]
 status: growing
+domain: meta
 draft: false
 attribution: "spark: you · sharpened with ChatGPT"
 sources:

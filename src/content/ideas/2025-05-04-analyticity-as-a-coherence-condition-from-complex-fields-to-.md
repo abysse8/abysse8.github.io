@@ -3,6 +3,7 @@ title: "Analyticity as a coherence condition, from complex fields to firing neur
 date: 2025-05-04
 tags: ["complex-analysis", "qed", "neuroscience", "harmonic-functions"]
 status: growing
+domain: neuro
 draft: false
 attribution: "spark: your question · reframed as a coherence-condition hypothesis by ChatGPT"
 sources:

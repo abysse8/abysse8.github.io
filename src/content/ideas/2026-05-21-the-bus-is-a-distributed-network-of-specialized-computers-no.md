@@ -3,6 +3,7 @@ title: "The bus is a distributed network of specialized computers, not a master-
 date: 2026-05-21
 tags: ["reverse-engineering", "embedded-systems", "transport-industry", "system-architecture"]
 status: growing
+domain: embedded
 draft: false
 attribution: "spark: your observation · architecture reframing by ChatGPT"
 sources:

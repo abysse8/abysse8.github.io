@@ -3,6 +3,7 @@ title: "Why is N·m torque here and energy there, if the units are identical?"
 date: 2025-09-27
 tags: ["physics", "units", "torque-vs-energy", "dimensional-analysis"]
 status: growing
+domain: physics
 draft: false
 attribution: "spark: your question · disambiguation by ChatGPT"
 sources:

@@ -3,6 +3,7 @@ title: "Autodiff isn't symbolic — it's a runtime graph, and my finite-differen
 date: 2025-07-05
 tags: ["autodiff", "pytorch", "chain-rule", "finite-differences"]
 status: growing
+domain: math
 draft: false
 attribution: "your confusion and your own finite-difference code · clarified by ChatGPT mapping it to your terms"
 sources:

@@ -3,6 +3,7 @@ title: "Finding a color by feel: cluster search over a perceptual space"
 date: 2025-02-03
 tags: ["color-search", "clustering", "k-means", "human-perception"]
 status: growing
+domain: meta
 draft: false
 attribution: "your problem framing · method proposed and sharpened by ChatGPT"
 sources:

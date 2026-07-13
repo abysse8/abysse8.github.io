@@ -3,6 +3,7 @@ title: "Why squaring units beat linear ones but blow up into polynomial chaos"
 date: 2025-05-02
 tags: ["neural-networks", "nonlinearity", "activation-functions", "expressivity"]
 status: growing
+domain: ai
 draft: false
 attribution: "your question · ChatGPT's mathematical expansion"
 sources:

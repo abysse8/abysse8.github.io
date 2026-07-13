@@ -3,6 +3,7 @@ title: "The submersible pressure capsule doesn't exist — and physics says it c
 date: 2025-10-04
 tags: ["sterilization", "autoclave", "physics", "mycology"]
 status: growing
+domain: physics
 draft: false
 attribution: "your intuition, corrected by ChatGPT's physics"
 sources:

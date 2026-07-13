@@ -3,6 +3,7 @@ title: "Superposition is what a state is; matrix multiplication is what it does"
 date: 2025-03-31
 tags: ["quantum-mechanics", "matrix-mechanics", "superposition", "heisenberg"]
 status: growing
+domain: physics
 draft: false
 attribution: "spark: your intuition (\"superposition means immiscible\") · sharpened with ChatGPT"
 revisits: [2025-04-05]

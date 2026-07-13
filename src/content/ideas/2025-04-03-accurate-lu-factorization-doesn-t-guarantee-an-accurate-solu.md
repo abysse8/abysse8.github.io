@@ -3,6 +3,7 @@ title: "Accurate LU factorization doesn't guarantee an accurate solution"
 date: 2025-04-03
 tags: ["numerical-stability", "lu-factorization", "pivoting", "conditioning"]
 status: growing
+domain: meta
 draft: false
 attribution: "spark: your question · sharpened with ChatGPT"
 sources:

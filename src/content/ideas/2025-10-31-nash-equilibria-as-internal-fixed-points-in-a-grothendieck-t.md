@@ -3,6 +3,7 @@ title: "Nash equilibria as internal fixed points in a Grothendieck topos"
 date: 2025-10-31
 tags: ["topos-theory", "game-theory", "fixed-points", "category-theory"]
 status: growing
+domain: math
 draft: false
 attribution: "your prompt pairing Grothendieck and Nash · synthesis and framing by ChatGPT"
 sources:

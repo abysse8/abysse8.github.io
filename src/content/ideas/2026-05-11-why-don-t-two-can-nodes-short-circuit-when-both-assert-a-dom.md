@@ -3,6 +3,7 @@ title: "Why don't two CAN nodes short-circuit when both assert a dominant bit?"
 date: 2026-05-11
 tags: ["can-bus", "electronics", "embedded-systems", "arbitration"]
 status: growing
+domain: embedded
 draft: false
 attribution: "your question, explained by ChatGPT"
 sources:

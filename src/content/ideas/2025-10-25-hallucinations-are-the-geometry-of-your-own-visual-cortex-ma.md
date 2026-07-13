@@ -3,6 +3,7 @@ title: "Hallucinations are the geometry of your own visual cortex, made visible"
 date: 2025-10-25
 tags: ["neuroscience", "perception", "psychedelics", "hallucinations"]
 status: growing
+domain: neuro
 draft: false
 attribution: "your question · ChatGPT's neuroscience synthesis"
 sources:

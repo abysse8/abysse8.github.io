@@ -3,6 +3,7 @@ title: "When skipping uniqueness makes your model lie: non-Lipschitz ODEs"
 date: 2023-11-11
 tags: ["differential-equations", "uniqueness", "mathematical-modeling", "teaching"]
 status: growing
+domain: math
 draft: false
 attribution: "spark: your teaching goal · worked example and phrasing by ChatGPT"
 sources:

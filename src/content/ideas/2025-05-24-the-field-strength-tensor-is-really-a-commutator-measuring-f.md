@@ -3,6 +3,7 @@ title: "The field strength tensor is really a commutator measuring failure to co
 date: 2025-05-24
 tags: ["gauge-theory", "field-strength", "commutators", "physics"]
 status: growing
+domain: physics
 draft: false
 attribution: "spark: your observation · sharpened with ChatGPT"
 sources:
