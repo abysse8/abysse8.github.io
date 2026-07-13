@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import BentoCard from "../components/BentoCard.astro";
 import Terminal from "../components/Terminal.astro";
 import NumberTicker from "../components/NumberTicker.astro";
+import RecurringQuestions from "../components/RecurringQuestions.astro";
 import { site, stats, projects, rooms } from "../config/site";
 ---
 
@@ -95,6 +96,9 @@ import { site, stats, projects, rooms } from "../config/site";
       </div>
     </div>
   </section>
+
+  <!-- Recurring questions timeline -->
+  <RecurringQuestions />
 
   <!-- Exhibition rooms -->
   <section id="exhibits" class="pt-24">
