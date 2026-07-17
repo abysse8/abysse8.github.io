@@ -1,0 +1,87 @@
+---
+// Hero visual: real footage of a Hanover LED destination sign driven over
+// reverse-engineered RS485 — the ESP32 Display Panel project, filmed on the
+// bench. Muted, looping, poster-still fallback, pauses under reduced-motion.
+// Assets in public/assets/hardware/ (from IMG_2567.MOV).
+---
+
+<figure
+  class="sign-wrap"
+  role="group"
+  aria-label="Footage of a real Hanover LED transit destination sign lit and scrolling on the workbench"
+>
+  <video
+    class="sign-vid"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/assets/hardware/hero-sign-poster.jpg"
+  >
+    <source src="/assets/hardware/hero-sign.webm" type="video/webm" />
+    <source src="/assets/hardware/hero-sign.mp4" type="video/mp4" />
+  </video>
+  <figcaption class="sign-cap">
+    <span class="dot" aria-hidden="true"></span>
+    real Hanover sign · driven by an ESP32 over reverse-engineered RS485
+  </figcaption>
+</figure>
+
+<style>
+  .sign-wrap {
+    width: 100%;
+    margin: 0;
+    border: 1px solid var(--color-border-strong, #2e2e36);
+    border-radius: 14px;
+    background: #08080a;
+    padding: 12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 20px 55px -30px rgba(232, 163, 61, 0.4);
+  }
+  .sign-vid {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 8.5;
+    object-fit: cover;
+    object-position: center 42%;
+    border-radius: 8px;
+    background: #050506;
+  }
+  .sign-cap {
+    margin: 11px 2px 2px;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    color: var(--color-faint, #6b6b75);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: #f0b453;
+    box-shadow: 0 0 8px rgba(232, 163, 61, 0.9);
+    animation: blink 2s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0.25; } }
+  @media (prefers-reduced-motion: reduce) {
+    .dot { animation: none; }
+  }
+</style>
+
+<script>
+  // Muted autoplay is allowed, but nudge play() for browsers that need it,
+  // and honor reduced-motion by pausing on the poster frame.
+  const v = document.querySelector<HTMLVideoElement>(".sign-vid");
+  if (v) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      v.removeAttribute("autoplay");
+      v.pause();
+    } else {
+      v.play().catch(() => {});
+    }
+  }
+</script>

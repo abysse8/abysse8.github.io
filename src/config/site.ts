@@ -6,8 +6,8 @@ export const site = {
   name: "J.G.",
   email: "julienabdougonzales@gmail.com",
   github: "https://github.com/abysse8",
-  headline: "I build systems where firmware meets learning algorithms.",
-  sub: "Reverse-engineering industrial bus protocols, closing real-time control loops, and wiring AI pipelines to physical hardware — from the transistor to the transformer.",
+  headline: "From the transistor to the transformer.",
+  sub: "I build the electronics that sense the physical world — and the AI that makes sense of it. Reverse-engineered bus protocols, real-time control loops, hardware wired to learning algorithms.",
 };
 
 export const stats = [
