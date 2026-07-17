@@ -48,9 +48,36 @@ python emit_drafts.py --allow-flagged  # include flagged ones after you've read 
 #    then `npm run build`.
 ```
 
+## Token-free queue (already-scored ideas)
+
+When ideas are **already scored** by a prior run (e.g. the idea-inventory export),
+skip the LLM entirely — no API tokens:
+
+```bash
+# 1. Put the scored ideas at  pipeline/data/raw/idea_inventory.json
+#    (list of {s: score, d: domain, k: user|both|assistant, i: idea, dt: date, topic})
+
+# 2. Copy the name block and fill in real names (gitignored, local only):
+cp pipeline/queue/denylist.example.txt pipeline/data/denylist.txt   # then edit
+
+# 3. Build the review queue (deterministic filters only — no model calls):
+python pipeline/queue/build_queue.py            # default: score >= 9, yours only
+python pipeline/queue/build_queue.py --min-score 8   # widen the net
+
+# 4. Approve in pipeline/data/curated/review.md, then emit as usual:
+python pipeline/emit_drafts.py
+```
+
+`build_queue.py` filters: score threshold, `attribution ∈ {user, both}` (never the
+assistant's ideas), **denylist hard block**, and dedupe vs already-published
+fragments. The denylist is a deterministic third-party name block with **no
+override** — enforced again inside `emit_drafts.py`, so a blocked name can never
+publish even if approved by mistake.
+
 ## Privacy
 
 - `pipeline/data/` is gitignored. Raw exports and normalized transcripts stay local.
+- `pipeline/data/denylist.txt` (real names) is gitignored; only the `.example.txt` is tracked.
 - The curator flags names/employers/paths/credentials in `privacy_flags`; those
   fragments won't emit without `--allow-flagged`.
 - Every emitted fragment is `draft: true`. `getCollection('ideas', …!draft)` keeps
