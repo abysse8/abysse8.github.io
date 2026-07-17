@@ -1,0 +1,18 @@
+# Third-party denylist — DETERMINISTIC hard block, no override.
+#
+# Copy this file to  pipeline/data/denylist.txt  (which is gitignored) and fill
+# in the real names. Any candidate whose idea text, topic, or title contains one
+# of these terms (case-insensitive substring) is REFUSED — it never enters the
+# review queue and can never be emitted, even if approved by mistake.
+#
+# One term per line. Blank lines and lines starting with # are ignored.
+# Use this ONLY for people and private entities. Technical terms belong in the
+# curator, not here.
+#
+# people in your life (partners, exes, family, friends)
+# employers / clients you don't want named publicly
+# anything else that must never surface
+
+# --- examples (delete these) ---
+# Jane Doe
+# Acme Corp

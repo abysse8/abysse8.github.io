@@ -18,9 +18,27 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "ingest"))
-from schema import ROOT, CURATED  # noqa: E402
+from schema import ROOT, DATA, CURATED  # noqa: E402
 
 IDEAS_DIR = ROOT / "src" / "content" / "ideas"
+DENYLIST = DATA / "denylist.txt"
+
+
+def load_denylist() -> list[str]:
+    """Deterministic third-party name block — the last line of defence. Even an
+    approved fragment cannot be written if it contains one of these terms."""
+    if not DENYLIST.exists():
+        return []
+    return [
+        ln.strip().lower()
+        for ln in DENYLIST.read_text(encoding="utf-8").splitlines()
+        if ln.strip() and not ln.startswith("#")
+    ]
+
+
+def denied(text: str, terms: list[str]) -> str | None:
+    low = text.lower()
+    return next((t for t in terms if t in low), None)
 
 
 def slugify(title: str) -> str:
@@ -73,6 +91,7 @@ def main() -> None:
         return
 
     scored = {f["fragment_id"]: f for f in json.loads(scored_path.read_text())}
+    denylist = load_denylist()
     IDEAS_DIR.mkdir(parents=True, exist_ok=True)
 
     written = skipped = blocked = 0
@@ -80,6 +99,13 @@ def main() -> None:
         f = scored.get(fid)
         if not f:
             print(f"  ? {fid} approved but not in scored data — skipping")
+            continue
+        # Deterministic third-party block: no override, ever. Runs before the
+        # softer privacy-flag gate so a denylisted name can never be published.
+        hit = denied(f"{f.get('title','')} {f.get('distillation','')}", denylist)
+        if hit:
+            print(f"  ⛔ {fid} contains denylisted term '{hit}' — refusing (no override)")
+            blocked += 1
             continue
         if f.get("privacy_flags") and not allow_flagged:
             print(f"  ⚠️ {fid} has privacy flags {f['privacy_flags']} — re-run with --allow-flagged")
@@ -107,8 +133,13 @@ def main() -> None:
         revisits = [d for d in (f.get("revisits") or []) if d and d != date]
         if revisits:
             fm.append("revisits: [" + ", ".join(revisits) + "]")
-        fm.append("sources:")
-        fm += source_entries(f)
+        # Only emit `sources:` when we have real quotes — an empty key parses to
+        # null and fails the schema. Inventory-derived fragments have no verbatim
+        # quote, so they omit the key and rely on the collection's [] default.
+        src_lines = source_entries(f)
+        if src_lines:
+            fm.append("sources:")
+            fm += src_lines
         fm += ["---", "", f["distillation"], ""]
         out.write_text("\n".join(fm))
         print(f"  + {out.name}")
