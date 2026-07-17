@@ -82,6 +82,7 @@ export const projects: Project[] = [
 // Google-Slides presentations page removed — fewer, denser surfaces.
 export const rooms = [
   { href: "/ideas/", title: "Ideas & Fragments", blurb: "64 ideas mined from three years of thinking — spark to crystallization." },
+  { href: "/how-i-work/", title: "How I Work", blurb: "Soft skills, measured: 3.5 years of my own AI conversations, scored and joined to the ideas they produced." },
   { href: "/projects/", title: "Projects & Prototypes", blurb: "Firmware, protocol archaeology, control loops, AI automation." },
   { href: "/cv/", title: "Digital CV", blurb: "Background, roles, skills, contact — everything professional." },
 ];
