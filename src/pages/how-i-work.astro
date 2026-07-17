@@ -1,0 +1,146 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="How I Work — abysse8"
+  description="Soft skills, measured: a 3.5-year self-audit of 10,000+ AI conversations, scored week by week and joined to the ideas I produced."
+>
+  <div class="mx-auto max-w-[1100px] px-6 pt-24">
+    <!-- Header -->
+    <header class="mb-14 max-w-[64ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Soft skills, measured</p>
+      <h1 class="mt-3 mb-5 text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-[-0.025em] text-balance">
+        Most soft-skills sections are adjectives. This one is data.
+      </h1>
+      <p class="text-[1.05rem] text-muted">
+        I exported every conversation I've had with ChatGPT since February 2023 and had an
+        independent model score two things, with no cherry-picking: <strong class="font-medium text-foreground">how I
+        behave</strong> — all 10,397 of my own messages, scored week by week across 161 weeks on eight
+        behavioral dimensions — and <strong class="font-medium text-foreground">what I produce</strong> — 1,585 technical
+        ideas mined from those same chats, each dated, attributed, and rated for quality.
+      </p>
+    </header>
+
+    <!-- Temperament -->
+    <section class="reveal mb-20">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Temperament</p>
+      <h2 class="mt-3 mb-6 text-[clamp(1.4rem,3vw,1.9rem)] font-semibold tracking-[-0.02em]">Who shows up to the work.</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">161/178</div>
+        <div class="mt-1 text-[0.9rem] font-semibold">weeks of deliberate practice</div>
+        <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">Active nearly every week since Feb 2023 — including all 52 weeks of 2025. Learning isn't a phase; it's a cadence.</p>
+      </div>
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">0.14</div>
+        <div class="mt-1 text-[0.9rem] font-semibold">friction, 3.5-year average</div>
+        <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">Conflict was my lowest-scored behavior — the single lowest dimension in a third of all weeks. I push on problems, not on people.</p>
+      </div>
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">×2.4</div>
+        <div class="mt-1 text-[0.9rem] font-semibold">growth in openness</div>
+        <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">My willingness to expose gaps and ask for help more than doubled (0.21 → 0.50), and honest self-review grew with it.</p>
+      </div>
+      </div>
+      <div class="mt-8 max-w-[62ch] border-l-2 border-accent pl-6">
+        <p class="text-[1.0rem] text-muted">
+          Saying "I don't know" early is an engineering skill — it's how bugs get found before they ship.
+          The judge scored my willingness to expose uncertainty and ask for help, week by week
+          <span class="text-faint">(9-week smoothing)</span>:
+        </p>
+      </div>
+      <div class="mt-6 rounded-xl border border-border bg-surface p-5">
+        <svg viewBox="0 0 720 240" width="100%" role="img" aria-label="Openness in weekly AI conversations rising from 0.21 in 2023 to 0.50 in 2026 on a 0 to 1 scale" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,monospace">
+<line x1="46" y1="160.0" x2="660" y2="160.0" stroke="#212127" stroke-width="1"/><text x="38" y="164.0" fill="#6b6b75" font-size="11" text-anchor="end">0.2</text><line x1="46" y1="112.0" x2="660" y2="112.0" stroke="#212127" stroke-width="1"/><text x="38" y="116.0" fill="#6b6b75" font-size="11" text-anchor="end">0.4</text><line x1="46" y1="64.0" x2="660" y2="64.0" stroke="#212127" stroke-width="1"/><text x="38" y="68.0" fill="#6b6b75" font-size="11" text-anchor="end">0.6</text><line x1="46.0" y1="16" x2="46.0" y2="208" stroke="#18181d" stroke-width="1"/><text x="46.0" y="230" fill="#6b6b75" font-size="11" text-anchor="middle">2023</text><line x1="216.6" y1="16" x2="216.6" y2="208" stroke="#18181d" stroke-width="1"/><text x="216.6" y="230" fill="#6b6b75" font-size="11" text-anchor="middle">2024</text><line x1="387.1" y1="16" x2="387.1" y2="208" stroke="#18181d" stroke-width="1"/><text x="387.1" y="230" fill="#6b6b75" font-size="11" text-anchor="middle">2025</text><line x1="557.7" y1="16" x2="557.7" y2="208" stroke="#18181d" stroke-width="1"/><text x="557.7" y="230" fill="#6b6b75" font-size="11" text-anchor="middle">2026</text>
+<polyline points="59.1,156.6 65.6,163.2 95.0,164.5 104.8,166.9 114.6,170.7 117.9,178.4 121.2,191.7 124.4,177.1 127.7,177.1 131.0,175.7 134.3,174.4 137.5,177.1 140.8,173.1 144.1,168.5 147.3,159.2 150.6,163.2 153.9,164.5 157.1,161.9 163.7,163.2 166.9,164.5 170.2,165.9 173.5,167.2 176.7,160.5 180.0,158.7 183.3,145.3 186.5,153.3 189.8,138.7 193.1,129.3 196.4,118.7 199.6,105.3 202.9,105.3 206.2,110.7 209.4,108.8 212.7,122.1 216.6,115.5 219.8,132.8 223.1,138.1 226.4,132.8 229.6,134.1 232.9,135.5 236.2,134.1 239.4,146.7 242.7,130.7 246.0,134.7 249.2,117.3 252.5,107.5 255.8,108.8 259.0,111.5 262.3,107.5 265.6,112.3 268.9,101.6 272.1,101.6 275.4,102.9 278.7,113.6 281.9,115.5 285.2,118.1 288.5,116.3 291.7,117.6 295.0,113.9 298.3,117.9 301.5,120.5 304.8,108.5 308.1,97.9 311.3,105.9 314.6,104.5 317.9,99.7 321.2,97.1 324.4,101.3 327.7,106.7 331.0,113.3 334.2,130.7 337.5,140.0 340.8,132.0 347.3,137.3 353.8,149.3 357.1,142.7 360.4,128.0 363.6,126.7 366.9,125.3 370.2,117.3 373.4,118.7 376.7,128.0 380.0,124.5 383.3,120.5 387.1,123.2 390.4,133.9 393.6,125.1 396.9,117.1 400.2,117.1 403.5,109.9 406.7,102.4 410.0,102.4 413.3,99.7 416.5,92.3 419.8,84.3 423.1,86.4 426.3,98.1 429.6,104.8 432.9,105.3 436.1,111.5 439.4,113.6 442.7,110.9 445.9,122.4 449.2,127.5 452.5,127.5 455.8,123.7 459.0,109.1 462.3,103.7 465.6,87.7 468.8,83.7 472.1,83.7 475.4,77.1 478.6,85.3 481.9,78.7 485.2,68.0 488.4,74.7 491.7,73.3 495.0,76.0 498.2,69.3 501.5,69.3 504.8,73.3 508.0,54.7 511.3,52.0 514.6,51.7 517.9,45.9 521.1,47.7 524.4,46.1 527.7,54.1 530.9,47.5 534.2,46.1 537.5,51.5 540.7,54.9 544.0,63.2 547.3,65.1 550.5,69.9 553.8,79.5 557.7,79.5 560.9,95.5 564.2,99.5 567.5,96.8 570.7,101.3 574.0,101.3 577.3,108.5 580.5,119.2 583.8,116.5 587.1,123.2 590.4,119.2 593.6,110.4 596.9,112.0 600.2,106.9 603.4,105.6 606.7,99.7 610.0,93.9 613.2,95.2 616.5,86.4 619.8,78.9 623.0,81.1 626.3,82.9 629.6,87.0 632.8,84.8 636.1,89.0" fill="none" stroke="#e8a33d" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="59.1" cy="156.6" r="3.5" fill="#e8a33d"/><circle cx="636.1" cy="89.0" r="3.5" fill="#e8a33d"/>
+<text x="59.1" y="146.6" fill="#ededf0" font-size="12" font-weight="600" text-anchor="middle">0.21</text>
+<text x="645.1" y="93.0" fill="#ededf0" font-size="12" font-weight="600">0.50</text></svg>
+      </div>
+    </section>
+
+    <!-- Output -->
+    <section class="reveal mb-20">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Output</p>
+      <h2 class="mt-3 mb-6 text-[clamp(1.4rem,3vw,1.9rem)] font-semibold tracking-[-0.02em]">What the work produces.</h2>
+      <div class="mb-8 max-w-[62ch]">
+        <p class="text-[1.0rem] text-muted">
+          The judge rated every mined idea for quality. The share earning a high rating has climbed
+          steeply — with an honest dip in 2024:
+        </p>
+      </div>
+      <div class="mb-8 rounded-xl border border-border bg-surface p-5">
+        <svg viewBox="0 0 460 210" width="100%" style="max-width:460px" role="img" aria-label="Share of ideas rated 8 or higher per year: 24 percent 2023, 16 percent 2024, 40 percent 2025, 50 percent 2026" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,monospace">
+<line x1="20" y1="176" x2="450" y2="176" stroke="#212127"/><path d="M40,176 v-55 a4,4 0 0 1 4,-4 h64 a4,4 0 0 1 4,4 v55 z" fill="#e8a33d"/>
+<text x="76.0" y="107.8" fill="#ededf0" font-size="14" font-weight="700" text-anchor="middle">24%</text>
+<text x="76.0" y="194" fill="#9a9aa3" font-size="12" text-anchor="middle">2023</text>
+<text x="76.0" y="208" fill="#6b6b75" font-size="10" text-anchor="middle">n=101</text><path d="M142,176 v-35 a4,4 0 0 1 4,-4 h64 a4,4 0 0 1 4,4 v35 z" fill="#e8a33d"/>
+<text x="178.0" y="127.53333333333333" fill="#ededf0" font-size="14" font-weight="700" text-anchor="middle">16%</text>
+<text x="178.0" y="194" fill="#9a9aa3" font-size="12" text-anchor="middle">2024</text>
+<text x="178.0" y="208" fill="#6b6b75" font-size="10" text-anchor="middle">n=123</text><path d="M244,176 v-95 a4,4 0 0 1 4,-4 h64 a4,4 0 0 1 4,4 v95 z" fill="#e8a33d"/>
+<text x="280.0" y="68.33333333333334" fill="#ededf0" font-size="14" font-weight="700" text-anchor="middle">40%</text>
+<text x="280.0" y="194" fill="#9a9aa3" font-size="12" text-anchor="middle">2025</text>
+<text x="280.0" y="208" fill="#6b6b75" font-size="10" text-anchor="middle">n=724</text><path d="M346,176 v-119 a4,4 0 0 1 4,-4 h64 a4,4 0 0 1 4,4 v119 z" fill="#e8a33d"/>
+<text x="382.0" y="43.66666666666666" fill="#ededf0" font-size="14" font-weight="700" text-anchor="middle">50%</text>
+<text x="382.0" y="194" fill="#9a9aa3" font-size="12" text-anchor="middle">2026</text>
+<text x="382.0" y="208" fill="#6b6b75" font-size="10" text-anchor="middle">n=637</text></svg>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-3">
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">×2.9</div>
+        <div class="mt-1 text-[0.9rem] font-semibold">idea density</div>
+        <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">Ideas produced per message nearly tripled (0.08 → 0.23, 2023 → 2026). I extract more from every exchange than I used to.</p>
+      </div>
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">41≈42%</div>
+        <div class="mt-1 text-[0.9rem] font-semibold">weekday vs weekend</div>
+        <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">High-rated idea share is identical on weekdays and weekends. Curiosity doesn't clock out.</p>
+      </div>
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">50%</div>
+        <div class="mt-1 text-[0.9rem] font-semibold">of ideas are co-created</div>
+        <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">Half the corpus is built in genuine back-and-forth with the AI, at quality parity with either side alone. AI-augmented, not AI-dependent.</p>
+      </div>
+      </div>
+    </section>
+
+    <!-- Killed hypothesis -->
+    <section class="reveal mb-20 max-w-[64ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">The claim I tested and killed</p>
+      <h2 class="mt-3 mb-6 text-[clamp(1.4rem,3vw,1.9rem)] font-semibold tracking-[-0.02em]">Checking my own favorite story.</h2>
+      <div class="space-y-4 text-[1.0rem] text-muted">
+        <p>
+          I hypothesized that my emotionally intense weeks produce my best ideas — and the first
+          correlation pass agreed enthusiastically. Then I controlled for a confound: busy weeks generate
+          more messages, which means more ideas harvested <em>and</em> more emotional text to score.
+          <strong class="font-medium text-foreground">Holding message volume fixed, the mood–quality link collapses to
+          noise.</strong> The romantic version of me was a statistical artifact.
+        </p>
+        <p>
+          One subtler signal survived, pointing the other way:
+          <strong class="font-medium text-foreground">playfulness this week is the best predictor of idea quality and
+          output <em>next</em> week</strong> <span class="text-faint">(r ≈ 0.27 across 109 consecutive-week pairs —
+          modest, and flagged tentative since it emerged from a multi-test sweep)</span>. Lightness precedes
+          fertility; anxiety predicts nothing.
+        </p>
+        <p class="border-l-2 border-accent pl-6 text-foreground">
+          I'm keeping the dead hypothesis on this page on purpose. Testing your own favorite claim — and
+          publishing the result either way — is the soft skill.
+        </p>
+      </div>
+    </section>
+
+    <!-- Method -->
+    <section class="reveal mb-8 max-w-[64ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Method, honestly</p>
+      <ul class="mt-4 space-y-3 text-[0.95rem] text-muted">
+        <li class="border-l border-border pl-4">Scores come from a language-model judge reading my prompts, not a psychologist. Treat the <strong class="font-medium text-foreground">trends</strong> as signal and the second decimal as noise.</li>
+        <li class="border-l border-border pl-4">Both datasets were scored by the same judge, so they could share a bias — the behavioral and output findings corroborate, they don't independently confirm.</li>
+        <li class="border-l border-border pl-4">Idea ratings only span 7–10 (the inventory kept ideas already judged good), which compresses every correlation. Terse heads-down coding weeks score flat on every dimension — correctly.</li>
+        <li class="border-l border-border pl-4">The raw weekly data stays private; what's published here is the aggregate story it supports.</li>
+        <li class="border-l border-border pl-4">The pipeline — export → weekly segmentation → scoring → joining the two datasets → confound checks — is my own build, the same skills in the <a href="/projects/" class="text-accent hover:underline hover:underline-offset-4">projects room</a>.</li>
+      </ul>
+    </section>
+  </div>
+</Base>
