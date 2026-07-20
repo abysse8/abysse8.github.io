@@ -5,8 +5,9 @@ import { site } from "../config/site";
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
-const { title, description = "Embedded systems × applied AI — firmware, protocol archaeology, control theory, and learning algorithms." } = Astro.props;
+const { title, description = "Embedded systems × applied AI — firmware, protocol archaeology, control theory, and learning algorithms.", noindex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,6 +18,7 @@ const { title, description = "Embedded systems × applied AI — firmware, proto
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
