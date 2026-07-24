@@ -22,6 +22,33 @@ import Base from "../layouts/Base.astro";
       </p>
     </header>
 
+    <!-- Corpus at a glance -->
+    <section class="reveal mb-20">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">The corpus</p>
+      <h2 class="mt-3 mb-2 text-[clamp(1.4rem,3vw,1.9rem)] font-semibold tracking-[-0.02em]">Three and a half years, quantified.</h2>
+      <p class="mb-6 max-w-[60ch] text-muted">Not a survey I filled in — the actual record of how I think, work, and get unstuck, written one message at a time.</p>
+      <div class="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
+        {[
+          ["41", "months, continuous", "Feb 2023 → today"],
+          ["2,643", "conversations", "every thread, kept"],
+          ["31,841", "messages", "12,539 written by me"],
+          ["95,625", "sentences I wrote", "≈ 4,100 pages"],
+          ["28 × 3", "emotion taxonomy", "categories × dimensions"],
+          ["49", "agents in the pipeline", "labeled the core sample"],
+        ].map(([n, label, sub]) => (
+          <div class="bg-bg p-5">
+            <div class="font-mono text-[1.6rem] font-semibold tracking-tight tabular-nums text-accent">{n}</div>
+            <div class="mt-1 text-[0.82rem] font-semibold leading-tight">{label}</div>
+            <div class="mt-0.5 text-[0.72rem] text-faint">{sub}</div>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 max-w-[62ch] text-[0.82rem] text-faint">
+        The deep emotion-labeling in this page is a <span class="text-muted">drill core</span> — 3,077 sentences from the
+        densest 8-week window, hand-calibrated then labeled by a 49-agent fleet. The corpus around it is ~30× larger.
+      </p>
+    </section>
+
     <!-- Temperament -->
     <section class="reveal mb-20">
       <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Temperament</p>
@@ -57,6 +84,36 @@ import Base from "../layouts/Base.astro";
 <circle cx="59.1" cy="156.6" r="3.5" fill="#e8a33d"/><circle cx="636.1" cy="89.0" r="3.5" fill="#e8a33d"/>
 <text x="59.1" y="146.6" fill="#ededf0" font-size="12" font-weight="600" text-anchor="middle">0.21</text>
 <text x="645.1" y="93.0" fill="#ededf0" font-size="12" font-weight="600">0.50</text></svg>
+      </div>
+    </section>
+
+    <!-- Two languages -->
+    <section class="reveal mb-20">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Two languages</p>
+      <h2 class="mt-3 mb-6 text-[clamp(1.4rem,3vw,1.9rem)] font-semibold tracking-[-0.02em]">I think in two languages, split by domain.</h2>
+      <div class="mb-8 max-w-[62ch]">
+        <p class="text-[1.0rem] text-muted">
+          I'm bilingual, but the two languages aren't interchangeable — each owns a different kind of
+          thinking. Tagging every message by topic and language shows a clean split that holds
+          <em>inside the same weeks</em>, so it tracks the work, not the calendar.
+        </p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">90%</div>
+          <div class="mt-1 text-[0.9rem] font-semibold">of technical work, in English</div>
+          <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">Circuits, signals, maths, the brain — the abstraction stayed in the language I first studied it in.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">69%</div>
+          <div class="mt-1 text-[0.9rem] font-semibold">of career &amp; life, in French</div>
+          <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">Jobs, interviews, the concrete social world — my life speaks in my mother tongue.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">1,535</div>
+          <div class="mt-1 text-[0.9rem] font-semibold">topic-tagged messages</div>
+          <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">The split is measured, not felt: point me at a system and I write in English; point me at my own life and I switch to French.</p>
+        </div>
       </div>
     </section>
 
@@ -166,6 +223,37 @@ import Base from "../layouts/Base.astro";
           <span class="text-foreground">weights in a spiking network as geometric steering of input space</span>.
           Signal processing and neuromorphic computing, wearing a biology coat.
         </p>
+      </div>
+    </section>
+
+    <!-- How I interrogate -->
+    <section class="reveal mb-20">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">How I interrogate</p>
+      <h2 class="mt-3 mb-6 text-[clamp(1.4rem,3vw,1.9rem)] font-semibold tracking-[-0.02em]">Guess first, then try to break it.</h2>
+      <div class="mb-8 max-w-[62ch]">
+        <p class="text-[1.0rem] text-muted">
+          The reflex that killed the hypothesis below runs through every exchange. I rarely ask open
+          questions — I float a claim, then hunt for what disproves it. These three habits fall out of
+          the raw text, and the last two were measured with <strong class="font-medium text-foreground">no
+          language-model judge in the loop</strong>, so they can't inherit its bias.
+        </p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">82%</div>
+          <div class="mt-1 text-[0.9rem] font-semibold">of my questions are hypotheses</div>
+          <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">82% arrive already answered — "it's X, right?", "…, no?" — a guess tagged for disconfirmation rather than an open query.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">~10×</div>
+          <div class="mt-1 text-[0.9rem] font-semibold">growth in explicit analogies</div>
+          <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">My "this is like that" rate rose roughly tenfold since 2023. I learn a new domain by mapping it onto one I own — the cochlea as a wavelet transform, a Kalman filter as weighted belief.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <div class="font-mono text-[1.7rem] font-semibold tracking-tight tabular-nums text-accent">÷2</div>
+          <div class="mt-1 text-[0.9rem] font-semibold">hand-holding, halved</div>
+          <p class="mt-1.5 text-[0.82rem] leading-normal text-muted">My "explain this to me" rate fell by half (6.5% → 2.9%) while my question rate rose to 37%: less hand-holding, more interrogation, over the same years.</p>
+        </div>
       </div>
     </section>
 
