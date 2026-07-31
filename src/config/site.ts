@@ -81,6 +81,7 @@ export const projects: Project[] = [
 // Pruned to the three real surfaces (2026-07). Empty "soon" rooms and the
 // Google-Slides presentations page removed — fewer, denser surfaces.
 export const rooms = [
+  { href: "/posts/", title: "Posts", blurb: "Stories of mathematics — short teaching threads on signal processing and compression, each with a figure built from scratch." },
   { href: "/ideas/", title: "Ideas & Fragments", blurb: "64 ideas mined from three years of thinking — spark to crystallization." },
   { href: "/how-i-work/", title: "How I Work", blurb: "Soft skills, measured: 3.5 years of my own AI conversations, scored and joined to the ideas they produced." },
   { href: "/projects/", title: "Projects & Prototypes", blurb: "Firmware, protocol archaeology, control loops, AI automation." },
