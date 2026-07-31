@@ -33,4 +33,19 @@ const ideas = defineCollection({
   }),
 });
 
-export const collections = { ideas };
+// LinkedIn "story of mathematics" posts — teaching threads, each with a hero
+// figure and (optionally) hand-rolled code. Same draft-gate discipline as ideas.
+const posts = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
+  schema: z.object({
+    title: z.string().max(120),
+    date: z.coerce.date(),
+    blurb: z.string().max(280),
+    tags: z.array(z.string()).min(1).max(5),
+    hero: z.string().optional(), // path under /posts/, e.g. /posts/compression-delete90.png
+    code: z.string().optional(), // path to a downloadable script, e.g. /posts/compress_demo.py
+    draft: z.boolean().default(true),
+  }),
+});
+
+export const collections = { ideas, posts };
