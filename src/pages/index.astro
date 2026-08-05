@@ -5,6 +5,12 @@ import TransitSign from "../components/TransitSign.astro";
 import NumberTicker from "../components/NumberTicker.astro";
 import RecurringQuestions from "../components/RecurringQuestions.astro";
 import { site, stats, projects, rooms } from "../config/site";
+import { getCollection } from "astro:content";
+
+// Feature the newest published posts on the landing page — the one link delivers the best work.
+const featuredPosts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
 <Base title="abysse8 — Embedded Systems × Applied AI">
@@ -72,26 +78,72 @@ import { site, stats, projects, rooms } from "../config/site";
     </div>
   </section>
 
+  <!-- Writing / posts -->
+  <section id="writing" class="pt-24">
+    <div class="mx-auto max-w-[1100px] px-6">
+      <div class="reveal mb-12 max-w-[60ch]">
+        <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Writing · stories of mathematics</p>
+        <h2 class="mt-3 mb-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.02em] text-balance">
+          One idea, one figure, built from scratch.
+        </h2>
+        <p class="text-muted">
+          Short teaching threads on signal processing and compression — each carrying a result I generated from a few
+          lines of numpy, not borrowed.
+        </p>
+      </div>
+      {
+        featuredPosts.length > 0 && (
+          <div class="grid gap-4 md:grid-cols-2">
+            {featuredPosts.map((p) => (
+              <a
+                href={`/posts/${p.id.replace(/\.md$/, "")}/`}
+                class="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-border-strong"
+              >
+                {p.data.hero && (
+                  <img
+                    src={p.data.hero}
+                    alt=""
+                    loading="lazy"
+                    class="aspect-[16/9] w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+                  />
+                )}
+                <div class="flex flex-1 flex-col p-5">
+                  <h3 class="mb-2 text-[1rem] leading-snug font-semibold text-foreground">{p.data.title}</h3>
+                  <p class="text-[0.85rem] text-muted">{p.data.blurb}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        )
+      }
+      <a href="/posts/" class="reveal mt-6 inline-flex items-center gap-1.5 font-mono text-[0.82rem] text-accent hover:underline hover:underline-offset-4">
+        → All posts
+      </a>
+    </div>
+  </section>
+
   <!-- Research -->
   <section id="research" class="pt-24">
     <div class="mx-auto max-w-[1100px] px-6">
       <div class="reveal mb-12 max-w-[60ch]">
         <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Research direction</p>
         <h2 class="mt-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.02em] text-balance">
-          Toward a post-backpropagation learning algorithm.
+          The brain looks like a transform coder.
         </h2>
       </div>
       <div class="reveal max-w-[62ch] border-l-2 border-accent pl-6 text-[1.02rem] text-muted">
         <p>
-          My research centers on <strong class="font-medium text-foreground">excitable cells</strong> — how chemistry in
-          the nucleus, transcribing and translating DNA, interacts with the electrochemistry on either side of the
-          membrane. I believe we are on the brink of a
-          <strong class="font-medium text-foreground">novel learning algorithm</strong> that could outperform batched
-          backpropagation. Signal processing gives the first hints; group theory, wavelet analysis, and energy
-          conservation belong in the unified theory of the Microscopic and the Ensemble. I want to understand both.
+          My work sits where <strong class="font-medium text-foreground">signal processing</strong> meets
+          <strong class="font-medium text-foreground">biological computation</strong>. One result keeps reappearing: the
+          transforms that compress natural signals best — wavelets, sparse codes — are close to the ones the brain
+          appears to use. I reproduced <strong class="font-medium text-foreground">Olshausen–Field sparse coding</strong>
+          from scratch: give an optimizer natural-image patches and a metabolic-style budget, and V1-like receptive
+          fields emerge on their own. The thread I follow — computation as
+          <strong class="font-medium text-foreground">sparse representation under an energy constraint</strong>,
+          measurable in bits and testable on real signals.
         </p>
-        <a href="/ideas/" class="mt-6 inline-flex items-center gap-1.5 font-mono text-[0.82rem] text-accent hover:underline hover:underline-offset-4">
-          → For Neuromorphs: ideas &amp; fragments
+        <a href="/posts/" class="mt-6 inline-flex items-center gap-1.5 font-mono text-[0.82rem] text-accent hover:underline hover:underline-offset-4">
+          → Watch the receptive fields emerge
         </a>
       </div>
     </div>
