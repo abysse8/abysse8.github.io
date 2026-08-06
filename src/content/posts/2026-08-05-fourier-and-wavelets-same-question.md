@@ -3,10 +3,9 @@ title: "Fourier and wavelets are the same question asked at different resolution
 date: 2026-08-05
 blurb: "Both answer one question — what basis makes this signal cheap to describe? The difference is where they're willing to be vague: Fourier in time, wavelets trade sharpness in time against sharpness in frequency."
 tags: ["signal-processing", "wavelets", "fourier", "information-theory"]
-draft: true
+hero: /posts/tf-tiling.png
+draft: false
 ---
-
-*Draft — pull the derivation from my Fall-2023 filter-bank notes; add a time-frequency tiling figure.*
 
 On day one of my wavelets class I wrote, without realizing it was the whole course: *"learning how to design the basis $\{\Phi_i\}$ so that $x = \sum c_i \Phi_i$ needs fewer coefficients."* That sentence is also the whole of Fourier analysis. Both are one move — **choose a basis that makes the signal cheap** — and they differ only in where they're willing to be vague.
 
@@ -21,6 +20,10 @@ Any transform writes a signal as a sum over a basis, $x = \sum_i c_i \Phi_i$, wi
 
 You can't be perfectly sharp in both time and frequency — that's the Heisenberg–Gabor limit, the same inequality as in quantum mechanics, for the same Fourier-duality reason. Every transform is a *choice of compromise*. Fourier spends all its sharpness on frequency. Wavelets spend it adaptively: wide-in-time / narrow-in-frequency at low frequencies, narrow-in-time / wide-in-frequency at high ones — which is exactly how natural signals are built (slow backgrounds, sudden edges).
 
+![The time–frequency plane tiled three ways — samples, Fourier, wavelets — every tile the same area.](/posts/tf-tiling.png)
+
+Every tile has the **same area** — you can't beat the uncertainty principle, only choose the tile's *shape*. Samples are perfectly sharp in time and blind to frequency; Fourier is perfectly sharp in frequency and blind to time; wavelets give fine time where the signal is fast and fine frequency where it's slow. Same budget, three ways to spend it.
+
 ## Why this matters for compression
 
-Natural images are piecewise-smooth: mostly flat, with sparse edges. Wavelets match that structure, so their coefficients are wildly unequal — which, as the [coding-gain post](/posts/) showed, is precisely the condition for large $G$. Fourier's basis doesn't localize, so a single edge lights up coefficients everywhere. Same underlying idea — a change of basis — but wavelets pick the basis that fits how the world's signals are actually shaped.
+Natural images are piecewise-smooth: mostly flat, with sparse edges. Wavelets match that structure, so their coefficients are wildly unequal — which, as the [coding-gain post](/posts/2026-08-02-the-number-that-predicts-compressibility/) showed, is precisely the condition for large $G$. Fourier's basis doesn't localize, so a single edge lights up coefficients everywhere. Same underlying idea — a change of basis — but wavelets pick the basis that fits how the world's signals are actually shaped.
