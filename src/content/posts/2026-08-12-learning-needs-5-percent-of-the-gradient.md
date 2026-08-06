@@ -1,7 +1,7 @@
 ---
 title: "Learning doesn't need the true gradient — 5% of it will do"
 date: 2026-08-12
-blurb: "Backprop computes the exact gradient. But a learning rule only needs its update to point vaguely the same way — positive correlation with the true gradient is enough, and a 5% shadow of it still learns. Below zero, it explodes. That sharp cliff is why the brain can learn without backprop's exact wiring."
+blurb: "Backprop computes the exact gradient — but a learning rule only needs to point roughly downhill. Positive correlation with the true gradient is enough: 5% of it still learns, and below zero it explodes. That cliff is why brains can learn without backprop's exact wiring."
 tags: ["learning", "backprop", "feedback-alignment", "neuromorphic"]
 hero: /posts/gradient-alignment.png
 code: /posts/gradient-alignment.py
