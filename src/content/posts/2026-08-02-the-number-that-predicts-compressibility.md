@@ -3,11 +3,9 @@ title: "The one number that tells you if a signal will compress — before you c
 date: 2026-08-02
 blurb: "Coding gain G is the ratio of the arithmetic to the geometric mean of the subband energies. It says, in advance, whether a transform will help — and it's exactly 1 for noise."
 tags: ["signal-processing", "compression", "information-theory"]
-hero: /posts/compression-delete90.png
-draft: true
+hero: /posts/coding-gain.png
+draft: false
 ---
-
-*Draft — flesh out with a per-band energy figure before publishing.*
 
 Last time I showed that wavelets compress by hiding the error where you can't see it. But here's a sharper question: can you tell, *before* running any compression, whether a signal will compress at all? Yes — with one number.
 
@@ -30,5 +28,9 @@ You save $\tfrac{1}{2}\log_2 G$ bits per sample. By the AM–GM inequality, $G \
 ## The falsifier
 
 Compression gain *is* energy imbalance across bands, and $G$ measures it. On my baby photo, $G = 26.8$ — huge, because a portrait is mostly smooth skin (one enormous low-frequency band, tiny detail bands). On white noise, $G = 1$, and no transform on earth will help you. That's the checkable claim: **a transform helps if and only if the signal is non-white, and $G$ says by how much.**
+
+![Subband energies — baby photo (G = 26.8, bands wildly unequal → compressible) vs white noise (G = 1.0, all bands equal → uncompressible).](/posts/coding-gain.png)
+
+Left: my baby photo, one Haar level. The low-frequency band holds **12,035** units of energy; the finest detail band holds **6**. That imbalance is the whole reason it compresses. Right: white noise — all four bands near 5,450, dead equal. G = 1.0, and no transform will save you.
 
 *The assumptions, stated so nobody has to catch me: Gaussian source, high-rate quantization, optimal bit allocation, orthonormal transform. Real images satisfy none exactly, so measured gain differs from predicted — G is the idealized number, not a guarantee.*
