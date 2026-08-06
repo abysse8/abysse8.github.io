@@ -26,4 +26,4 @@ Every tile has the **same area** — you can't beat the uncertainty principle, o
 
 ## Why this matters for compression
 
-Natural images are piecewise-smooth: mostly flat, with sparse edges. Wavelets match that structure, so their coefficients are wildly unequal — which, as the [coding-gain post](/posts/2026-08-02-the-number-that-predicts-compressibility/) showed, is precisely the condition for large $G$. Fourier's basis doesn't localize, so a single edge lights up coefficients everywhere. Same underlying idea — a change of basis — but wavelets pick the basis that fits how the world's signals are actually shaped.
+Natural images are piecewise-smooth: mostly flat, with sparse edges. Wavelets match that structure, so their coefficients are wildly unequal — a few large ones on the edges, near-zero everywhere else — which is exactly the condition that makes a transform worth doing. Fourier's basis doesn't localize, so a single edge lights up coefficients everywhere. Same underlying idea — a change of basis — but wavelets pick the basis that fits how the world's signals are actually shaped.
