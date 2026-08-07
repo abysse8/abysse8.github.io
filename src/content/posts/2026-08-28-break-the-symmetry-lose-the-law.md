@@ -1,7 +1,7 @@
 ---
 title: "Break the symmetry, lose the law — energy and momentum, one at a time"
 date: 2026-08-28
-blurb: "Momentum is conserved because space looks the same everywhere; energy because time does. I broke each symmetry in a simulation and watched exactly its conserved quantity drift — momentum only when I added a fixed trap, energy only when I made the forces depend on time. Noether, surgically."
+blurb: "Momentum is conserved because space looks the same everywhere; energy because time does. I broke each symmetry in a simulation and watched exactly its own quantity drift — momentum when I added a trap, energy when the forces turned time-dependent. Noether, surgically."
 tags: ["physics", "mechanics", "symmetry", "noether"]
 hero: /posts/noether.png
 code: /posts/noether.py
