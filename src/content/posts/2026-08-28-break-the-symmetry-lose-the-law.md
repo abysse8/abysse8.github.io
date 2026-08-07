@@ -30,6 +30,12 @@ Here's the asymmetry Dirac was pointing at, and why it's real. In the Hamiltonia
 
 The Lagrangian/relativistic view heals the split — it treats space and time on equal footing and packs both conservation laws into one equation, $\partial_\mu T^{\mu\nu}=0$, energy for $\nu=0$ and momentum for $\nu=i$. Same content, no favouritism. The Hamiltonian's asymmetry was a feature of the *bookkeeping*, not the physics.
 
+## How far the asymmetry goes
+
+There's a sharper way to say why energy hides. Every conserved charge is also the *generator* of its symmetry: momentum generates spatial shifts, energy generates time evolution. A spatial shift *rearranges a single instant* — you can photograph it. Time evolution isn't a rearrangement within a moment; it's the rule that carries one moment into the next. Energy conservation says *that rule doesn't change* — a claim about the whole film, never one frame. In bracket terms: momentum is a function *on* phase space with $\{P,H\}=0$; energy is $H$ *itself* — it doesn't just live on the stage, it runs the play.
+
+You can even force the symmetry back to democratic. Promote time to a coordinate — give the system a worldline parameter $\lambda$, let $t(\lambda)$ become a dynamical variable with conjugate momentum $p_t=-E$ — and the whole dynamics collapses to one constraint, $H + p_t = 0$. Now energy is just another momentum from a cyclic coordinate, perfectly symmetric with the spatial ones. The price is a preferred clock — and that road runs straight into general relativity, where there is *no* global time-translation symmetry to begin with, so energy conservation goes local and famously slippery (the energy in the gravitational field refuses to sit anywhere). Push to quantum gravity and time drops out of the equation entirely. Dirac's small bookkeeping asymmetry is the seed of the "problem of time." *(That last step is open physics — a gesture, not a settled result.)*
+
 ## The falsifier
 
 If conservation weren't tied one-to-one to symmetry, breaking translation would also disturb energy, and breaking time would also disturb momentum. Neither happens: each break moves its own quantity and nothing else, to the digit. That one-to-one is Noether's theorem, and it's on the screen.
