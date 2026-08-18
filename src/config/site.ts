@@ -76,6 +76,22 @@ export const projects: Project[] = [
       "Neuromorphic spike-timing-dependent plasticity with nearest-neighbour dynamics — where the hardware obsession meets the learning-algorithm question.",
     stack: ["SNN", "STDP", "Python"],
   },
+  {
+    tag: "Research · Johns Hopkins",
+    title: "C. elegans Connectome",
+    href: "https://github.com/abysse8",
+    description:
+      "Graph analysis of the C. elegans connectome across its developmental stages (Witvliet 2020 / BossDB): partitioning the brain into functional modules and measuring per-module synaptic reconfiguration over development. Course EN.601.201, advised by Dr. William Gray-Roncal.",
+    stack: ["Python", "NetworkX", "Graph theory"],
+  },
+  {
+    tag: "Research · Johns Hopkins",
+    title: "Wavelets → Neural Network",
+    href: "/posts/",
+    description:
+      "Discrete-wavelet-transform (DWT) coefficients fed to a neural network in place of raw pixels — faster convergence at a smaller architecture. The seed of the compression and sparse-coding thread I still write about today.",
+    stack: ["Wavelets (DWT)", "Neural networks", "Signal processing"],
+  },
 ];
 
 // Pruned to the three real surfaces (2026-07). Empty "soon" rooms and the
