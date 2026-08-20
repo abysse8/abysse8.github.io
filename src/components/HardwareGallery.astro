@@ -1,0 +1,61 @@
+---
+// Masonry-ish gallery of real hardware shots with a PhotoSwipe lightbox.
+// Reads the generated manifest so images + dimensions stay in sync.
+import gallery from "../../public/assets/hardware/gallery.json";
+---
+
+<section id="lab" class="pt-24">
+  <div class="mx-auto max-w-[1100px] px-6">
+    <div data-reveal class="mb-12 max-w-[60ch]">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">From the bench</p>
+      <h2 class="mt-3 mb-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.02em] text-balance">
+        Real hardware, real benches.
+      </h2>
+      <p class="text-muted">
+        Not renders — the actual signs, validators, and field kit I build and reverse-engineer. Click any
+        frame.
+      </p>
+    </div>
+
+    <div id="pswp-gallery" class="columns-2 gap-4 md:columns-3 [&>*]:mb-4">
+      {
+        gallery.map((img, i) => (
+          <a
+            href={img.src}
+            data-pswp-width={img.w}
+            data-pswp-height={img.h}
+            data-reveal
+            data-reveal-delay={(i % 3) * 0.08}
+            class="group block overflow-hidden rounded-xl border border-border bg-surface break-inside-avoid"
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              width={img.w}
+              height={img.h}
+              class="w-full transition duration-500 will-change-transform group-hover:scale-[1.04] group-hover:brightness-110"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#pswp-gallery",
+    children: "a",
+    pswpModule: () => import("photoswipe"),
+    bgOpacity: 0.92,
+  });
+  lightbox.init();
+</script>
+
+<style is:global>
+  .pswp { --pswp-bg: #0a0a0c; }
+</style>

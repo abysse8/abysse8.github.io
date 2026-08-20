@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { site } from "../config/site";
+import MotionEngine from "../components/MotionEngine.astro";
 
 interface Props {
   title: string;
@@ -63,6 +64,8 @@ const { title, description = "Embedded systems × applied AI — firmware, proto
         </div>
       </div>
     </footer>
+
+    <MotionEngine />
 
     <script>
       // Scroll reveals — reveal once at 12% visibility. CSS handles reduced motion.
