@@ -2,6 +2,8 @@
 import Base from "../layouts/Base.astro";
 import BentoCard from "../components/BentoCard.astro";
 import TransitSign from "../components/TransitSign.astro";
+import HeroFx from "../components/HeroFx.astro";
+import HardwareGallery from "../components/HardwareGallery.astro";
 import NumberTicker from "../components/NumberTicker.astro";
 import RecurringQuestions from "../components/RecurringQuestions.astro";
 import { site, stats, projects, rooms } from "../config/site";
@@ -17,29 +19,34 @@ const featuredPosts = (await getCollection("posts", ({ data }) => !data.draft))
   <!-- Hero -->
   <div class="relative overflow-hidden pt-24 pb-16">
     <div class="grid-bg absolute inset-0 -z-10" aria-hidden="true"></div>
+    <HeroFx />
     <div class="mx-auto grid max-w-[1100px] items-center gap-12 px-6 min-[860px]:grid-cols-[1.1fr_0.9fr]">
       <div>
         <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Embedded systems × applied AI</p>
-        <h1 class="mt-4 mb-6 text-[clamp(2.2rem,5.2vw,3.4rem)] leading-[1.08] font-bold tracking-[-0.025em] text-balance">
+        <h1 data-scramble class="mt-4 mb-6 text-[clamp(2.2rem,5.2vw,3.4rem)] leading-[1.08] font-bold tracking-[-0.025em] text-balance">
           {site.headline}
         </h1>
         <p class="mb-8 max-w-[46ch] text-[1.06rem] text-muted">{site.sub}</p>
         <div class="flex flex-wrap gap-3">
           <a
             href="/cv/"
+            data-magnetic
             class="inline-flex items-center gap-2 rounded-lg bg-foreground px-4.5 py-2.5 text-sm font-medium text-bg transition-opacity hover:opacity-85"
           >
             View CV →
           </a>
           <a
             href={site.github}
+            data-magnetic
             class="inline-flex items-center gap-2 rounded-lg border border-border-strong px-4.5 py-2.5 text-sm font-medium transition-colors hover:border-faint hover:bg-surface"
           >
             GitHub
           </a>
         </div>
       </div>
-      <TransitSign />
+      <div data-parallax="-30">
+        <TransitSign />
+      </div>
     </div>
   </div>
 
@@ -77,6 +84,9 @@ const featuredPosts = (await getCollection("posts", ({ data }) => !data.draft))
       </div>
     </div>
   </section>
+
+  <!-- Hardware gallery -->
+  <HardwareGallery />
 
   <!-- Writing / posts -->
   <section id="writing" class="pt-24">

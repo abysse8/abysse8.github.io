@@ -1,0 +1,154 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../config/site";
+
+const githubProjects = [
+  {
+    title: "CoverGemini",
+    tag: "IA appliquée · dépôt public",
+    description: "Une offre d'emploi devient un CV LaTeX sur mesure en 30 s : iOS → Gemini → Flask → PDF. L'IA qui fait gagner du temps réel, pas en théorie.",
+    href: "https://github.com/abysse8/CoverGemini",
+  },
+  {
+    title: "Contrôleur universel d'afficheurs — SVT",
+    tag: "Projet interne · code propriétaire",
+    description: "Boîtier unique (ESP32, C/C++) pilotant trois familles d'afficheurs de bus derrière une interface logicielle commune. Travail d'études SVT — démo sur demande.",
+    href: site.github,
+  },
+  {
+    title: "Reporting automatisé — SVT",
+    tag: "Projet interne · SVT Communication",
+    description: "Pipeline Flask + React transformant les données d'intervention en rapports techniques livrés au client. Code propriétaire (démo sur demande).",
+    href: site.github,
+  },
+];
+
+const planks = [
+  {
+    number: "01",
+    title: "Une IA claire, utile et enseignée",
+    body: "La charte IA présente l’IA comme un levier stratégique, mais sa règle par défaut est l’interdiction en l’absence de consigne explicite de l’enseignant. Le problème n’est pas théorique : tout usage non autorisé est assimilé au plagiat — qualifié de contrefaçon dans le règlement, avec sanctions jusqu’à l’exclusion. Autrement dit, faute d’une consigne claire, un étudiant peut se trouver exposé pour avoir simplement utilisé un outil. Je veux que chaque module annonce dès le départ ce qui est autorisé, et que la formation IA promise arrive réellement jusqu’à nous.",
+  },
+  {
+    number: "02",
+    title: "Des formats qui tiennent compte des trajets",
+    body: "Pour les étudiants qui vivent loin, une partie des cours, ressources ou séances pourrait être pensée avec un vrai format à distance : supports accessibles, captations quand c’est pertinent, et visio quand le cours s’y prête. L’objectif n’est pas de remplacer le présentiel, mais d’éviter que la distance devienne une pénalité pédagogique.",
+  },
+  {
+    number: "03",
+    title: "Une représentation qui remonte les faits",
+    body: "Un délégué n’a pas le pouvoir de modifier une note ou de voter à la place des jurys. Il a le devoir d’être présent, de faire remonter les situations avec sérieux et de porter la voix de la promotion dans les bons espaces. Je veux créer un point de contact simple, régulier et documenté entre la classe et l’équipe pédagogique.",
+  },
+  {
+    number: "04",
+    title: "Égalité des chances, dans la pratique",
+    body: "L’égalité ne doit pas seulement exister dans les textes : elle doit être visible dans l’accès aux informations, aux aménagements, aux ressources et aux occasions de réussir. Je défendrai une approche concrète, confidentielle et respectueuse des situations individuelles.",
+  },
+  {
+    number: "05",
+    title: "Face à une sanction, une présence et des droits",
+    body: "Si un apprenti est convoqué pour une mesure disciplinaire, le délégué siège à la commission de discipline — c’est inscrit dans le règlement (art. 28). Chacun a le droit d’être accompagné par la personne de son choix, à une décision écrite et motivée, et à un recours sous 15 jours. Mon rôle : être présent, veiller à ce que la procédure soit respectée, et faire en sorte que personne n’affronte cela seul ni sans connaître ses droits.",
+  },
+];
+---
+
+<Base
+  title="Julien Gonzales — Candidature délégué"
+  description="La candidature de Julien Gonzales pour représenter sa promotion CESI. Une représentation concrète, une IA enseignée, une formation plus accessible."
+>
+  <div class="campaign-shell">
+    <section class="campaign-hero">
+      <div class="campaign-kicker">Candidature · délégué de promotion</div>
+      <div class="campaign-hero-grid">
+        <div>
+          <p class="campaign-eyebrow">FISA A3 S3E · 2026—2029</p>
+          <h1>Ce que je peux<br /><em>faire pour nous.</em></h1>
+          <p class="campaign-lede">Je m’appelle Julien. Je construis des systèmes, j’écoute les problèmes jusqu’au bout et je préfère une demande précise à une promesse vague.</p>
+          <div class="campaign-actions">
+            <a href="#positions" class="campaign-button campaign-button-primary">Voir mes positions <span>↓</span></a>
+            <a href={site.github} class="campaign-button campaign-button-ghost">Voir mon travail ↗</a>
+          </div>
+        </div>
+        <div class="campaign-poster" aria-label="Informations sur le scrutin">
+          <span class="poster-label">Le scrutin</span>
+          <strong>VENDREDI</strong>
+          <strong class="poster-accent">13:30—16:30</strong>
+          <span class="poster-rule"></span>
+          <span>Une voix pour la promotion.</span>
+          <span>Une présence quand ça compte.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="campaign-intro">
+      <div class="campaign-section-label">01 · Pourquoi moi</div>
+      <div class="campaign-intro-copy">
+        <h2>Pas un porte-parole<br /><em>qui disparaît après le vote.</em></h2>
+        <div>
+          <p>Je veux représenter la classe avec une méthode simple : écouter, vérifier, synthétiser, puis revenir avec une réponse. Mon expérience en communication chez SVT et mes projets d’ingénierie m’ont appris à faire le lien entre un besoin de terrain et une solution qui fonctionne vraiment.</p>
+          <p>Ce site est aussi un exemple de cette façon de travailler : mon CV, mes projets et mes réflexions sont publics. Vous pouvez regarder ce que je construis avant de décider si vous me faites confiance.</p>
+          <a href="/cv" class="inline-link">Mon parcours complet (CV) →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="positions" class="campaign-positions">
+      <div class="campaign-section-label">02 · Mes positions</div>
+      <div class="position-list">
+        {planks.map((plank) => (
+          <article class="position-card">
+            <span class="position-number">{plank.number}</span>
+            <div><h3>{plank.title}</h3><p>{plank.body}</p></div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="campaign-proof">
+      <div class="campaign-section-label">03 · Ce que je construis déjà</div>
+      <div class="campaign-proof-grid">
+        <div>
+          <h2>L’IA n’est pas<br /><em>un slogan pour moi.</em></h2>
+          <p>Chez SVT Communication, elle m’aide à passer plus vite de l’idée à un outil utilisable : automatiser, structurer, tester et rendre le résultat transmissible. Le but n’est jamais de remplacer le jugement humain. C’est de libérer du temps pour mieux réfléchir, mieux apprendre et mieux faire.</p>
+          <a class="inline-link" href={site.github}>Explorer GitHub ↗</a>
+        </div>
+        <div class="project-stack">
+          {githubProjects.map((project) => (
+            <a class="mini-project" href={project.href}>
+              <span class="mini-project-tag">{project.tag}</span>
+              <strong>{project.title} <span>↗</span></strong>
+              <p>{project.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="campaign-listen">
+      <div class="campaign-section-label">04 · À vous de parler</div>
+      <div class="campaign-listen-grid">
+        <div>
+          <h2>Avant de parler<br /><em>en votre nom.</em></h2>
+          <p>Je veux d’abord comprendre ce qui vous concerne vraiment. Pas besoin de raconter une situation personnelle : un problème récurrent, une idée concrète ou une priorité pour la promotion suffit.</p>
+          <a class="campaign-button campaign-button-primary" href={`mailto:${site.email}?subject=Pour la promotion&body=Le sujet que j'aimerais voir remonter :%0D%0A%0D%0ACe que j'aimerais changer concrètement :%0D%0A`}>Envoyer une idée ↗</a>
+        </div>
+        <div class="listen-card">
+          <span class="mini-project-tag">Questions pour la classe</span>
+          <ol>
+            <li>Qu’est-ce qui rend la formation plus difficile qu’elle ne devrait l’être ?</li>
+            <li>Quelle priorité devrait être portée en premier ?</li>
+            <li>Quelle amélioration concrète voudriez-vous voir ?</li>
+            <li>Préférez-vous des retours anonymes, des points réguliers, ou les deux ?</li>
+          </ol>
+          <p class="listen-note">Merci de ne pas transmettre de données médicales, de notes ou de situation personnelle identifiable par email.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="campaign-close">
+      <p class="campaign-eyebrow">Une question, un problème, une idée ?</p>
+      <h2>Parlons-en avant<br /><em>de la prochaine réunion.</em></h2>
+      <a class="campaign-button campaign-button-primary" href={`mailto:${site.email}?subject=Pour la promotion`}>M’écrire directement ↗</a>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,38 @@
+[
+ {
+  "src": "/assets/hardware/esp32-rig.webp",
+  "w": 1600,
+  "h": 1200,
+  "alt": "Hanover LED sign driven by an ESP32 over reverse-engineered RS485"
+ },
+ {
+  "src": "/assets/hardware/module-in-hand.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "Bus display module held over a live LED destination panel"
+ },
+ {
+  "src": "/assets/hardware/ticketing-case.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "The complete onboard ticketing system in a field case"
+ },
+ {
+  "src": "/assets/hardware/field-bench.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "Validator, NFC reader and onboard computer on the field bench"
+ },
+ {
+  "src": "/assets/hardware/lab-bench.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "Mobitec LED panels and an oscilloscope on the workbench"
+ },
+ {
+  "src": "/assets/hardware/wide-lab.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "The lab: a metres-long LED destination panel across the bench"
+ }
+]
