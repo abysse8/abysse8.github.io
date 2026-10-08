@@ -1,0 +1,74 @@
+---
+// Global motion: Lenis smooth scroll + GSAP ScrollTrigger, wired together.
+// Honors reduced-motion (bails out, leaving native scroll + visible content).
+// Drop <MotionEngine /> once in the layout; components opt in via data-attrs:
+//   [data-reveal]         → fade + rise in on scroll (optional data-reveal-delay)
+//   [data-parallax="-40"] → translateY by N px across its scroll span
+//   [data-magnetic]       → element leans toward the cursor on hover
+---
+
+<script>
+  import Lenis from "lenis";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduce) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // --- smooth scroll ---
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((t) => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    // --- reveal on scroll ---
+    document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 28, autoAlpha: 0 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          delay: parseFloat(el.dataset.revealDelay || "0"),
+          scrollTrigger: { trigger: el, start: "top 85%" },
+        },
+      );
+    });
+
+    // --- parallax ---
+    document.querySelectorAll<HTMLElement>("[data-parallax]").forEach((el) => {
+      const dist = parseFloat(el.dataset.parallax || "-40");
+      gsap.to(el, {
+        y: dist,
+        ease: "none",
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+      });
+    });
+
+    // --- magnetic hover ---
+    document.querySelectorAll<HTMLElement>("[data-magnetic]").forEach((el) => {
+      const strength = 0.35;
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        gsap.to(el, {
+          x: (e.clientX - (r.left + r.width / 2)) * strength,
+          y: (e.clientY - (r.top + r.height / 2)) * strength,
+          duration: 0.4,
+          ease: "power3.out",
+        });
+      });
+      el.addEventListener("mouseleave", () =>
+        gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1,0.4)" }),
+      );
+    });
+  } else {
+    // reduced-motion: make sure anything we'd have revealed is simply visible
+    document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+      el.style.opacity = "1";
+    });
+  }
+</script>

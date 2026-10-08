@@ -1,0 +1,65 @@
+---
+// Hero flair: a cursor-following amber spotlight behind the hero, and a
+// scramble→decode animation for any [data-scramble] element. Both respect
+// reduced-motion. Place once inside the hero container (which must be relative).
+---
+
+<div id="spotlight" aria-hidden="true"></div>
+
+<style>
+  #spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    background: radial-gradient(
+      380px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(232, 163, 61, 0.14),
+      transparent 70%
+    );
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #spotlight { display: none; }
+  }
+</style>
+
+<script>
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const spot = document.getElementById("spotlight");
+
+  if (!reduce && spot) {
+    const hero = spot.parentElement!;
+    hero.addEventListener("pointermove", (e) => {
+      const r = hero.getBoundingClientRect();
+      spot.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      spot.style.setProperty("--my", `${e.clientY - r.top}px`);
+      spot.style.opacity = "1";
+    });
+    hero.addEventListener("pointerleave", () => (spot.style.opacity = "0"));
+  }
+
+  // scramble → decode
+  if (!reduce) {
+    const CH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&/<>*0123456789";
+    document.querySelectorAll<HTMLElement>("[data-scramble]").forEach((el) => {
+      const final = el.textContent || "";
+      let frame = 0;
+      const total = final.length;
+      const tick = () => {
+        frame++;
+        const revealed = Math.floor(frame / 2);
+        let out = "";
+        for (let i = 0; i < total; i++) {
+          const c = final[i];
+          if (i < revealed || c === " ") out += c;
+          else out += CH[Math.floor(Math.random() * CH.length)];
+        }
+        el.textContent = out;
+        if (revealed <= total) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+</script>
