@@ -179,7 +179,19 @@ summary:focus-visible {
 .campaign-close { text-align: center; padding-block: 6.5rem; }
 .campaign-close h2 { margin-top: 1rem; font-size: clamp(2.6rem, 6vw, 4.8rem); }
 
+/* Role: what the texts give vs what they withhold */
+.campaign-role { max-width: 1100px; margin: 0 auto; padding: 5.5rem 1.5rem; border-top: 1px solid var(--c-rule); }
+.role-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: start; margin-top: 2rem; }
+.role-intro h2 { margin: 0; font-size: clamp(2rem, 4.2vw, 3.4rem); line-height: 1.02; letter-spacing: -.045em; text-wrap: balance; }
+.role-intro p, .role-note { margin: 0; color: var(--c-muted); font-size: 1.04rem; line-height: 1.6; }
+.role-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; margin-top: 2.5rem; }
+.role-head { margin: 0 0 .9rem; font-size: 1.1rem; letter-spacing: -.015em; }
+.rule-limit { border-left-style: dashed; }
+.rule-limit .rule-label { background: var(--c-ink); color: var(--c-paper); }
+.role-note { margin-top: 2rem; max-width: 60rem; }
 @media (max-width: 800px) {
+  .role-intro, .role-cols { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .campaign-role { padding-block: 3.8rem; }
   .campaign-hero, .campaign-intro-copy, .campaign-proof-grid, .campaign-listen-grid, .position-card { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .know-grid { grid-template-columns: minmax(0, 1fr); }
   .campaign-hero { padding-top: 2.5rem; }
