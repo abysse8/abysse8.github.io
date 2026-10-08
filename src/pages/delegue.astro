@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import { site } from "../config/site";
 
 const instagram = { handle: "@lj.gzs", href: "https://www.instagram.com/lj.gzs/" };
-const questionnaire = "https://tally.so/r/zxaV6g";
+const questionnaire = "https://tally.so/r/zxakRg";
 
 const githubProjects = [
   {
@@ -97,7 +97,7 @@ const goodToKnow = [
         <h1>Julien<br />Gonzales</h1>
         <p class="campaign-lede">Je construis des systèmes, j’écoute les problèmes jusqu’au bout, et je préfère une demande précise, appuyée sur le règlement, à une promesse vague.</p>
         <div class="campaign-actions">
-          <a href={questionnaire} class="campaign-button campaign-button-primary">Le questionnaire · 1 min ↗</a>
+          <a href={questionnaire} class="campaign-button campaign-button-primary">Le questionnaire · 2 min ↗</a>
           <a href="#positions" class="campaign-button campaign-button-ghost">Mes positions ↓</a>
           <a href={instagram.href} class="campaign-button campaign-button-ghost">{instagram.handle} ↗</a>
         </div>
@@ -229,12 +229,14 @@ const goodToKnow = [
       <div class="campaign-listen-grid">
         <div>
           <h2>Avant de parler <mark>en votre nom.</mark></h2>
-          <p>Deux questions, toutes facultatives, moins d’une minute. Aucun nom ni e-mail demandé. Je partagerai les résultats bruts avec la promo : le nombre de réponses par sujet et toutes les suggestions.</p>
+          <p>D’abord un classement de six sujets, puis trois questions courtes. Chaque réponse est enregistrée dès que tu la valides : tu peux t’arrêter quand tu veux. Aucun nom ni e-mail demandé. Je partagerai les résultats bruts avec la promo.</p>
           <a class="campaign-button campaign-button-primary" href={questionnaire}>Répondre au questionnaire ↗</a>
         </div>
         <ol class="listen-card">
-          <li><span class="rule-label">Question 1</span>Quel sujet devrait passer en premier ?</li>
-          <li><span class="rule-label">Question 2</span>Une chose concrète que tu voudrais changer ?</li>
+          <li><span class="rule-label">1 · Classement</span>Dans quel ordre le délégué devrait-il traiter ces sujets ?</li>
+          <li><span class="rule-label">2 · Facultatif</span>Quelle amélioration concrète voudrais-tu demander au CESI ?</li>
+          <li><span class="rule-label">3 · Facultatif</span>Sur quelles règles ou démarches aimerais-tu une explication claire ?</li>
+          <li><span class="rule-label">4 · Facultatif</span>Après qu’un sujet a été remonté, quel retour te serait le plus utile ?</li>
         </ol>
       </div>
     </section>
