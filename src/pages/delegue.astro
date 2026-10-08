@@ -2,6 +2,9 @@
 import Base from "../layouts/Base.astro";
 import { site } from "../config/site";
 
+const instagram = { handle: "@lj.gzs", href: "https://www.instagram.com/lj.gzs/" };
+const questionnaire = "https://tally.so/r/zxaV6g";
+
 const githubProjects = [
   {
     title: "CoverGemini",
@@ -23,93 +26,139 @@ const githubProjects = [
   },
 ];
 
+// Every quote below is copied word for word from the document named in `source`.
+const RI = "Règlement intérieur apprenants, 1er juillet 2026";
 const planks = [
   {
-    number: "01",
     title: "Une IA claire, utile et enseignée",
-    body: "La charte IA présente l’IA comme un levier stratégique, mais sa règle par défaut est l’interdiction en l’absence de consigne explicite de l’enseignant. Le problème n’est pas théorique : tout usage non autorisé est assimilé au plagiat — qualifié de contrefaçon dans le règlement, avec sanctions jusqu’à l’exclusion. Autrement dit, faute d’une consigne claire, un étudiant peut se trouver exposé pour avoir simplement utilisé un outil. Je veux que chaque module annonce dès le départ ce qui est autorisé, et que la formation IA promise arrive réellement jusqu’à nous.",
+    body: "Quand l’enseignant n’a rien précisé, l’IA est interdite par défaut, et un usage non autorisé est traité comme un plagiat. Sans consigne claire, on peut être sanctionné pour avoir utilisé un outil. Je demanderai que chaque module annonce dès le départ ce qui est autorisé, et que la formation IA promise arrive vraiment jusqu’à nous.",
+    quotes: [
+      { label: "Charte IA CESI", source: "Charte IA CESI", text: "La règle par défaut est la suivante : en l'absence de consigne explicite de l'enseignant, l'usage de l'IAG est interdit. […] Tout recours non autorisé sera considéré comme une atteinte à l'intégrité académique et sanctionné au même titre qu'un plagiat" },
+    ],
   },
   {
-    number: "02",
     title: "Des formats qui tiennent compte des trajets",
-    body: "Pour les étudiants qui vivent loin, je demanderai que chaque séance précise clairement ce qui peut être suivi ou préparé à distance : supports accessibles, consignes anticipées et visioconférence lorsque le format s’y prête. Les cours en présentiel restent la règle, et toute captation ne pourrait se faire qu’avec une dérogation expresse. L’objectif n’est pas de remplacer le présentiel, mais d’éviter que la distance devienne une pénalité pédagogique.",
+    body: "Pour ceux qui vivent loin, je demanderai que chaque séance précise ce qui peut être préparé ou suivi à distance : supports accessibles, consignes anticipées, visioconférence quand le format s’y prête. Le présentiel reste la règle, et filmer un cours demande une autorisation : je ne promets pas de captations.",
+    quotes: [
+      { label: "Article 20", source: RI, text: "Il est formellement interdit, sauf dérogation expresse, d'enregistrer ou de filmer les séances de formation." },
+    ],
   },
   {
-    number: "03",
     title: "Une représentation qui remonte les faits",
-    body: "Un délégué n’a pas le pouvoir de modifier une note ou de voter à la place des jurys. Il a le devoir d’être présent, de faire remonter les situations avec sérieux et de porter la voix de la promotion dans les bons espaces. Je veux créer un point de contact simple, régulier et documenté entre la classe et l’équipe pédagogique.",
+    body: "Le délégué ne change pas une note et ne vote pas à la place du jury. Il y est invité, avec une voix consultative : il peut parler, et doit arriver avec des faits. Je veux un point de contact simple et régulier entre la classe et l’équipe pédagogique, avec un suivi écrit de ce qui a été remonté.",
+    quotes: [
+      { label: "Jurys", source: "Règlement des études, septembre 2021", text: "Les responsables et délégués des formations concernés sont membres invités" },
+      { label: "Délibérations", source: "Règlement des études, septembre 2021", text: "Seuls les membres du jury ont une voix délibérative. Les invités au jury ont une voix consultative." },
+    ],
   },
   {
-    number: "04",
     title: "Égalité des chances, dans la pratique",
-    body: "L’égalité ne doit pas seulement exister dans les textes : elle doit être visible dans l’accès aux informations, aux aménagements, aux ressources et aux occasions de réussir. Je défendrai une approche concrète, confidentielle et respectueuse des situations individuelles.",
+    body: "L’égalité passe d’abord par l’accès à l’information : savoir à qui écrire, et comment. Une réclamation écrite à la qualité est un droit prévu par le règlement. Je ferai connaître ces canaux, et j’aiderai à formuler une demande quand quelqu’un le souhaite, en toute confidentialité.",
+    quotes: [
+      { label: "Article 23", source: RI, text: "les personnes en formation peuvent porter réclamation éventuelle par mail à qualite@cesi.fr en précisant le nom du campus, la formation suivie et le motif de l'insatisfaction." },
+    ],
   },
   {
-    number: "05",
     title: "Face à une sanction, une présence et des droits",
-    body: "Si un apprenti est convoqué dans le cadre d’une procédure disciplinaire, le délégué y siège avec voix consultative, conformément à l’article 28 du règlement intérieur. Mon rôle sera d’informer la personne concernée des interlocuteurs et des étapes prévus par les textes, de l’accompagner si elle le souhaite dans ses démarches, et de faire remonter les difficultés dans le cadre qui m’est donné.",
+    body: "Convoqué à un entretien disciplinaire, on peut se faire assister par un autre apprenant : je serai disponible. Le délégué est aussi invité à la commission de discipline. La décision doit être écrite et motivée, et un recours est possible sous 15 jours. Personne ne devrait découvrir ces droits trop tard.",
+    quotes: [
+      { label: "Article 28-2", source: RI, text: "L'apprenant peut se faire assister, au cours de l'entretien, par une personne de son choix : apprenant ou salarié de l'établissement." },
+      { label: "Article 28-2", source: RI, text: "Sont invités à participer à la Commission de discipline, avec voix consultative : le délégué des élèves de la promotion" },
+      { label: "Article 28-3", source: RI, text: "la décision du conseil de discipline peut faire l'objet d'une demande de recours adressée par courrier auprès du service national de la scolarité, dans un délai de 15 jours à compter de la réception du courrier de notification de la décision." },
+    ],
   },
+];
+
+// Rules that cost apprentices days or pay when nobody knows them.
+const goodToKnow = [
+  { label: "Article 17-5", title: "Plus d’une heure de retard = demi-journée d’absence", text: "Au-delà de soixante minutes, l'apprenant n'est plus considéré comme retardataire mais comme absent sur la demi-journée concernée." },
+  { label: "Article 17-3", title: "48 heures pour justifier une absence", text: "L'apprenant doit prévenir l'établissement de son absence et doit déposer un justificatif sur la plate-forme dédiée dans les 48 heures." },
+  { label: "Absences à la demande de l’entreprise", title: "L’entreprise ne peut pas vous sortir des cours", text: "Les contraintes de fonctionnement de l'entreprise, les réunions internes, déplacements professionnels, séminaires, missions, périodes de forte activité ou impératifs de production ne constituent pas, par eux-mêmes, des motifs recevables d'absence sur le temps de formation." },
 ];
 ---
 
 <Base
   title="Julien Gonzales — Candidature délégué"
-  description="La candidature de Julien Gonzales pour représenter sa promotion CESI. Une représentation concrète, une IA enseignée, une formation plus accessible."
+  description="Julien Gonzales, candidat délégué FISA A3 S3E. Des positions appuyées sur le règlement, un questionnaire d'une minute, le vote vendredi 9 octobre."
 >
   <div class="campaign-shell">
     <section class="campaign-hero">
-      <div class="campaign-kicker">Candidature · délégué de promotion</div>
-      <div class="campaign-hero-grid">
-        <div>
-          <p class="campaign-eyebrow">FISA A3 S3E · 2026—2029</p>
-          <h1>Ce que je peux<br /><em>faire pour nous.</em></h1>
-          <p class="campaign-lede">Je m’appelle Julien. Je construis des systèmes, j’écoute les problèmes jusqu’au bout et je préfère une demande précise à une promesse vague.</p>
-          <div class="campaign-actions">
-            <a href="#positions" class="campaign-button campaign-button-primary">Voir mes positions <span>↓</span></a>
-            <a href={site.github} class="campaign-button campaign-button-ghost">Voir mon travail ↗</a>
-          </div>
-        </div>
+      <div class="hero-photo">
+        <img src="/delegue-julien.jpg" alt="Julien Gonzales" width="800" height="1000" />
         <div class="campaign-poster" aria-label="Informations sur le scrutin">
           <span class="poster-label">Le scrutin</span>
-          <strong>VENDREDI 9 OCT.</strong>
-          <strong class="poster-accent">13:30—16:30</strong>
-          <span class="poster-rule"></span>
-          <span>Une voix pour la promotion.</span>
-          <span>Une présence quand ça compte.</span>
+          <strong>Ven. 9 oct.</strong>
+          <strong>13:30—16:30</strong>
+          <span>Salle N1 - 113 Lyon</span>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <p class="campaign-kicker">Candidat délégué · FISA A3 S3E · 2026—2029</p>
+        <h1>Julien<br />Gonzales</h1>
+        <p class="campaign-lede">Je construis des systèmes, j’écoute les problèmes jusqu’au bout, et je préfère une demande précise, appuyée sur le règlement, à une promesse vague.</p>
+        <div class="campaign-actions">
+          <a href={questionnaire} class="campaign-button campaign-button-primary">Le questionnaire · 1 min ↗</a>
+          <a href="#positions" class="campaign-button campaign-button-ghost">Mes positions ↓</a>
+          <a href={instagram.href} class="campaign-button campaign-button-ghost">{instagram.handle} ↗</a>
         </div>
       </div>
     </section>
 
     <section class="campaign-intro">
-      <div class="campaign-section-label">01 · Pourquoi moi</div>
+      <p class="campaign-section-label">Pourquoi moi</p>
       <div class="campaign-intro-copy">
-        <h2>Pas un porte-parole<br /><em>qui disparaît après le vote.</em></h2>
+        <h2>Pas un porte-parole qui <mark>disparaît après le vote.</mark></h2>
         <div>
-          <p>Je veux représenter la classe avec une méthode simple : écouter, vérifier, synthétiser, puis revenir avec une réponse. Mon expérience en communication chez SVT et mes projets d’ingénierie m’ont appris à faire le lien entre un besoin de terrain et une solution qui fonctionne vraiment.</p>
-          <p>Ce site est aussi un exemple de cette façon de travailler : mon CV, mes projets et mes réflexions sont publics. Vous pouvez regarder ce que je construis avant de décider si vous me faites confiance.</p>
+          <p>Je veux représenter la classe avec une méthode simple : écouter, vérifier dans les textes, synthétiser, puis revenir avec une réponse. Mon expérience en communication chez SVT et mes projets d’ingénierie m’ont appris à faire le lien entre un besoin de terrain et une solution qui fonctionne vraiment.</p>
+          <p>Ce site en est un exemple : mon CV, mes projets et mes réflexions sont publics. Vous pouvez regarder ce que je construis avant de décider.</p>
           <a href="/cv" class="inline-link">Mon parcours complet (CV) →</a>
         </div>
       </div>
     </section>
 
     <section id="positions" class="campaign-positions">
-      <div class="campaign-section-label">02 · Mes positions</div>
+      <p class="campaign-section-label">Mes positions, et ce que dit le texte</p>
       <div class="position-list">
         {planks.map((plank) => (
           <article class="position-card">
-            <span class="position-number">{plank.number}</span>
-            <div><h3>{plank.title}</h3><p>{plank.body}</p></div>
+            <div class="position-claim">
+              <h3>{plank.title}</h3>
+              <p>{plank.body}</p>
+            </div>
+            <div class="position-quotes">
+              {plank.quotes.map((q) => (
+                <blockquote class="rule-quote">
+                  <span class="rule-label">{q.label}</span>
+                  <p>« {q.text} »</p>
+                  <cite>{q.source}</cite>
+                </blockquote>
+              ))}
+            </div>
           </article>
         ))}
       </div>
     </section>
 
+    <section class="campaign-know">
+      <p class="campaign-section-label">Ce que vous ne savez peut-être pas</p>
+      <div class="know-grid">
+        {goodToKnow.map((k) => (
+          <blockquote class="rule-quote know-card">
+            <span class="rule-label">{k.label}</span>
+            <h3>{k.title}</h3>
+            <p>« {k.text} »</p>
+            <cite>{RI}</cite>
+          </blockquote>
+        ))}
+      </div>
+    </section>
+
     <section class="campaign-proof">
-      <div class="campaign-section-label">03 · Ce que je construis déjà</div>
+      <p class="campaign-section-label">Ce que je construis déjà</p>
       <div class="campaign-proof-grid">
         <div>
-          <h2>L’IA n’est pas<br /><em>un slogan pour moi.</em></h2>
-          <p>Chez SVT Communication, elle m’aide à passer plus vite de l’idée à un outil utilisable : automatiser, structurer, tester et rendre le résultat transmissible. Le but n’est jamais de remplacer le jugement humain. C’est de libérer du temps pour mieux réfléchir, mieux apprendre et mieux faire.</p>
+          <h2>L’IA n’est pas un slogan <mark>pour moi.</mark></h2>
+          <p>Chez SVT Communication, elle m’aide à passer plus vite de l’idée à un outil utilisable : automatiser, structurer, tester et rendre le résultat transmissible. Le but n’est jamais de remplacer le jugement humain, mais de libérer du temps pour mieux réfléchir et mieux faire.</p>
           <a class="inline-link" href={site.github}>Explorer GitHub ↗</a>
         </div>
         <div class="project-stack">
@@ -125,30 +174,27 @@ const planks = [
     </section>
 
     <section class="campaign-listen">
-      <div class="campaign-section-label">04 · À vous de parler</div>
+      <p class="campaign-section-label">À vous de parler</p>
       <div class="campaign-listen-grid">
         <div>
-          <h2>Avant de parler<br /><em>en votre nom.</em></h2>
-          <p>Je veux d’abord comprendre ce qui vous concerne vraiment. Pas besoin de raconter une situation personnelle : un problème récurrent, une idée concrète ou une priorité pour la promotion suffit.</p>
-          <a class="campaign-button campaign-button-primary" href={`mailto:${site.email}?subject=Pour la promotion&body=Le sujet que j'aimerais voir remonter :%0D%0A%0D%0ACe que j'aimerais changer concrètement :%0D%0A`}>Envoyer une idée ↗</a>
+          <h2>Avant de parler <mark>en votre nom.</mark></h2>
+          <p>Deux questions, toutes facultatives, moins d’une minute. Aucun nom ni e-mail demandé. Je partagerai les résultats bruts avec la promo : le nombre de réponses par sujet et toutes les suggestions.</p>
+          <a class="campaign-button campaign-button-primary" href={questionnaire}>Répondre au questionnaire ↗</a>
         </div>
-        <div class="listen-card">
-          <span class="mini-project-tag">Questions pour la classe</span>
-          <ol>
-            <li>Quelle priorité dois-je porter en premier : IA, trajets/distanciel, suivi des problèmes, accès aux droits, ou procédures ?</li>
-            <li>Quel problème récurrent faudrait-il documenter avec des faits précis ?</li>
-            <li>Quelle information CESI vous manque le plus : aménagements, transport, absences, retard, aide ordinateur ou réclamation ?</li>
-            <li>Quel changement concret vous ferait dire que la représentation sert vraiment la promotion ?</li>
-          </ol>
-          <p class="listen-note">Merci de ne pas transmettre de données médicales, de notes ou de situation personnelle identifiable par email.</p>
-        </div>
+        <ol class="listen-card">
+          <li><span class="rule-label">Question 1</span>Quel sujet devrait passer en premier ?</li>
+          <li><span class="rule-label">Question 2</span>Une chose concrète que tu voudrais changer ?</li>
+        </ol>
       </div>
     </section>
 
     <section class="campaign-close">
-      <p class="campaign-eyebrow">Une question, un problème, une idée ?</p>
-      <h2>Parlons-en avant<br /><em>de la prochaine réunion.</em></h2>
-      <a class="campaign-button campaign-button-primary" href={`mailto:${site.email}?subject=Pour la promotion`}>M’écrire directement ↗</a>
+      <p class="campaign-kicker">Une question, un problème, une idée ?</p>
+      <h2>Parlons-en <mark>avant vendredi.</mark></h2>
+      <div class="campaign-actions campaign-actions-center">
+        <a class="campaign-button campaign-button-primary" href={`mailto:${site.email}?subject=Pour la promotion`}>M’écrire ↗</a>
+        <a class="campaign-button campaign-button-ghost" href={instagram.href}>{instagram.handle} ↗</a>
+      </div>
     </section>
   </div>
 </Base>
