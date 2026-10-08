@@ -13,6 +13,18 @@ import { getCollection } from "astro:content";
 const featuredPosts = (await getCollection("posts", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
+
+// The research thread, in reading order: compression (the baby photo) → coding gain → wavelets → V1.
+const RESEARCH_THREAD = [
+  "2026-07-31-where-does-the-error-go",
+  "2026-08-02-the-number-that-predicts-compressibility",
+  "2026-08-05-fourier-and-wavelets-same-question",
+  "2026-08-08-i-gave-an-optimizer-photos-and-it-invented-v1",
+];
+const published = await getCollection("posts", ({ data }) => !data.draft);
+const researchPosts = RESEARCH_THREAD.map((slug) => published.find((p) => p.id.replace(/\.md$/, "") === slug)).filter(
+  (p) => p !== undefined,
+);
 ---
 
 <Base title="abysse8 — Embedded Systems × Applied AI">
@@ -157,15 +169,32 @@ const featuredPosts = (await getCollection("posts", ({ data }) => !data.draft))
           signal-processing and wavelet courses, and a project mapping the <em>C. elegans</em> connectome as a
           developing graph. I've followed it ever since.
         </p>
-        <a href="/posts/" class="mt-6 inline-flex items-center gap-1.5 font-mono text-[0.82rem] text-accent hover:underline hover:underline-offset-4">
+        <a href="/posts/2026-08-08-i-gave-an-optimizer-photos-and-it-invented-v1/" class="mt-6 inline-flex items-center gap-1.5 font-mono text-[0.82rem] text-accent hover:underline hover:underline-offset-4">
           → Watch the receptive fields emerge
         </a>
       </div>
+      <ol class="reveal mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          researchPosts.map((p, i) => (
+            <li>
+              <a
+                href={`/posts/${p.id.replace(/\.md$/, "")}/`}
+                class="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-border-strong"
+              >
+                {p.data.hero && (
+                  <img src={p.data.hero} alt="" loading="lazy" class="aspect-[16/9] w-full object-cover opacity-90 group-hover:opacity-100" />
+                )}
+                <div class="flex flex-1 flex-col p-4">
+                  <span class="font-mono text-[0.68rem] text-accent">step {i + 1}</span>
+                  <h3 class="mt-1 text-[0.9rem] leading-snug font-semibold text-foreground">{p.data.title}</h3>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
     </div>
   </section>
-
-  <!-- Recurring questions timeline -->
-  <RecurringQuestions />
 
   <!-- Exhibition rooms -->
   <section id="exhibits" class="pt-24">
@@ -196,6 +225,9 @@ const featuredPosts = (await getCollection("posts", ({ data }) => !data.draft))
       </nav>
     </div>
   </section>
+
+  <!-- Recurring questions timeline -->
+  <RecurringQuestions />
 
   <!-- Contact -->
   <section id="contact" class="pt-24">
