@@ -125,7 +125,7 @@ summary:focus-visible {
 /* Hero: face first, name big, scrutin pinned to the photo. */
 .campaign-hero { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 4rem; align-items: center; padding-top: 4.5rem; }
 .hero-photo { position: relative; max-width: 26rem; }
-.hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 896 / 958; object-fit: cover; border: 1px solid var(--c-ink); }
+.hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--c-ink); }
 .campaign-poster { position: absolute; right: -1.6rem; bottom: -1.6rem; display: flex; flex-direction: column; gap: .15rem; padding: 1rem 1.2rem; background: var(--c-mark); border: 1px solid var(--c-ink); box-shadow: .35rem .35rem 0 var(--c-ink); }
 .campaign-poster strong { font-size: 1.6rem; line-height: 1; letter-spacing: -.03em; }
 .campaign-poster span:last-child { margin-top: .35rem; font-size: .85rem; }
