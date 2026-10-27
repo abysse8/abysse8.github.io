@@ -7,12 +7,20 @@ interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  lang?: string;
+  // Open Graph tags are emitted only when a page passes `og`.
+  og?: { image?: string; locale?: string; type?: string };
+  // Extra class on <html>, e.g. "tutoring" for the warm light/dark palette.
+  theme?: string;
+  // hreflang alternates for translated pages.
+  alternates?: { lang: string; href: string }[];
 }
-const { title, description = "Embedded systems × applied AI — firmware, protocol archaeology, control theory, and learning algorithms.", noindex = false } = Astro.props;
+const { title, description = "Embedded systems × applied AI — firmware, protocol archaeology, control theory, and learning algorithms.", noindex = false, lang = "en", og, theme, alternates = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} class={theme}>
   <head>
     <meta charset="utf-8" />
     <script is:inline>document.documentElement.classList.add("js");</script>
@@ -21,19 +29,34 @@ const { title, description = "Embedded systems × applied AI — firmware, proto
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
+    {
+      og && (
+        <>
+          <link rel="canonical" href={canonical} />
+          <meta property="og:type" content={og.type ?? "website"} />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={canonical} />
+          {og.locale && <meta property="og:locale" content={og.locale} />}
+          {og.image && <meta property="og:image" content={new URL(og.image, Astro.site)} />}
+        </>
+      )
+    }
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={new URL(a.href, Astro.site)} />)}
   </head>
   <body>
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-sm"
     >
-      Skip to content
+      {lang === "fr" ? "Aller au contenu" : "Skip to content"}
     </a>
 
     <header class="sticky top-0 z-50 border-b border-border bg-bg/70 backdrop-blur-md">
       <div class="mx-auto flex h-14 max-w-[1100px] items-center justify-between px-6">
         <a href="/" class="font-mono text-sm"><span class="text-accent">~/</span>{site.handle}</a>
+        {Astro.slots.has("nav") ? <slot name="nav" /> : (
         <nav class="flex items-center gap-6" aria-label="Main">
           <a href="/#work" class="hidden text-sm text-muted transition-colors hover:text-foreground sm:block">Work</a>
           <a href="/#research" class="hidden text-sm text-muted transition-colors hover:text-foreground sm:block">Research</a>
@@ -45,6 +68,7 @@ const { title, description = "Embedded systems × applied AI — firmware, proto
             For Employers
           </a>
         </nav>
+        )}
       </div>
     </header>
 
@@ -57,7 +81,8 @@ const { title, description = "Embedded systems × applied AI — firmware, proto
         <p class="font-mono text-xs text-faint">
           ~/{site.handle} · powered by caffeine, curiosity, and occasional chaos
         </p>
-        <div class="flex gap-6">
+        <div class="flex flex-wrap gap-6">
+          <slot name="footer" />
           <a href={site.github} class="text-sm text-muted hover:text-foreground">GitHub</a>
           <a href="/projects/" class="text-sm text-muted hover:text-foreground">Projects</a>
           <a href="/cv/" class="text-sm text-muted hover:text-foreground">CV</a>

@@ -1,0 +1,148 @@
+---
+import Tutoring from "../layouts/Tutoring.astro";
+import { contact, zones, rates, freeTrialMinutes, cancelNoticeHours, cesuUrl } from "../data/tutoring";
+
+const telHref = contact.phoneIsPlaceholder ? "#contact" : `tel:${contact.phoneHref}`;
+const mailHref = `mailto:${contact.email}?subject=${encodeURIComponent("Tutoring")}`;
+
+const subjects = [
+  { name: "Maths", levels: "Middle school → 2nd-year university / prépa" },
+  { name: "Physics & chemistry", levels: "Middle & high school, 1st-year physics" },
+  { name: "Electronics", levels: "STI2D / BTS support, Arduino & ESP32 projects for curious teens" },
+  { name: "English", levels: "English, and maths taught in English" },
+];
+---
+
+<Tutoring
+  lang="en"
+  title="Maths, physics & electronics tutoring in Orsay"
+  description="In-home tutoring in Orsay and nearby towns: maths, physics and electronics, from middle school to university, in English or French."
+>
+  <section class="pt-16 pb-12 sm:pt-24">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">{zones.join(" · ")}</p>
+      <h1 class="mt-4 mb-5 text-[clamp(1.9rem,6vw,3rem)] leading-[1.1] font-bold tracking-[-0.02em] text-balance">
+        Maths, physics &amp; electronics tutoring in Orsay
+      </h1>
+      <p class="mb-8 max-w-[48ch] text-[1.1rem] text-muted">
+        Middle school, high school and university, in English or French, at your home.
+        <strong class="font-semibold text-foreground">First {freeTrialMinutes}-minute session free.</strong>
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a
+          href={telHref}
+          class:list={[
+            "inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-foreground px-5 text-base font-medium text-bg hover:opacity-85",
+            contact.phoneIsPlaceholder && "outline-2 outline-dashed outline-offset-2 outline-red-500",
+          ]}
+        >
+          Call or text
+          {contact.phoneIsPlaceholder && <span class="font-mono text-xs">(TODO {contact.phone})</span>}
+        </a>
+        <a
+          href={mailHref}
+          class="inline-flex min-h-12 items-center justify-center rounded-lg border border-border-strong px-5 text-base font-medium hover:bg-surface"
+        >
+          Send an email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-6 text-[1.6rem] font-semibold tracking-[-0.015em]">Subjects &amp; levels</h2>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {
+          subjects.map((s) => (
+            <li class="rounded-xl border border-border bg-surface p-5">
+              <b class="block text-lg font-semibold">{s.name}</b>
+              <span class="text-[0.95rem] text-muted">{s.levels}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-6 text-[1.6rem] font-semibold tracking-[-0.015em]">Rates</h2>
+      <div class="grid gap-3 sm:grid-cols-2">
+        {
+          rates.map((r) => (
+            <div class="rounded-xl border border-border bg-surface p-5">
+              <p class="text-[0.95rem] font-medium text-muted">{r.level.en}</p>
+              <p class="mt-1 text-3xl font-bold tracking-tight">
+                €{r.net}/h <span class="text-base font-normal text-muted">net</span>
+              </p>
+              <p class="mt-2 text-[0.95rem]">
+                Estimated real cost after tax credit: <strong class="font-semibold">≈ €{r.afterCredit}/h</strong>
+              </p>
+            </div>
+          ))
+        }
+      </div>
+      <ul class="mt-6 space-y-2 text-[0.95rem] text-muted">
+        <li>
+          Paid through <strong class="font-semibold text-foreground">CESU</strong>: the net rate is my wage; social
+          contributions are added on top, and 50 % of the total comes back as a tax credit (French taxpayers). With
+          URSSAF's “avance immédiate”, you only pay the remaining half each month.
+        </li>
+        <li>
+          Real costs are <strong class="font-semibold text-foreground">estimates</strong>; check your case on
+          <a href={cesuUrl} class="text-accent underline underline-offset-4">cesu.urssaf.fr</a>. The tax credit applies to
+          lessons at your home only, not video lessons.
+        </li>
+        <li>Cancellations: free with at least {cancelNoticeHours} hours' notice.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-y border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">How lessons work</h2>
+      <p class="max-w-[60ch] text-muted">
+        A first diagnostic, then the student explains and reasons out loud, works on targeted exercises, and leaves
+        with a one-page summary. Parents get regular updates. On AI: I teach students to use it as a tutor that asks
+        questions, not an answer machine. They have a method explained step by step, then redo it alone without it, ask
+        for counterexamples and similar exercises, and have it review their own write-up to find their mistakes.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">About me</h2>
+      <p class="max-w-[60ch] text-muted">
+        I'm Julien, 23, an engineering apprentice at CESI in embedded electronic systems, working on electronics for
+        public transport. I studied at Johns Hopkins University, including honors-level maths courses in analysis. I'm
+        bilingual in English and French and live in Orsay, by the Orsay-Ville RER B station. Video lessons are possible
+        occasionally.
+      </p>
+      <p class="mt-4">
+        <a href="/cours/#superieur" hreflang="fr" class="text-accent underline underline-offset-4"
+          >University students: see an excerpt from my analysis write-ups (in English) on the French page →</a
+        >
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="border-t border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">Contact</h2>
+      <p class="mb-2 text-[1.05rem]">
+        {
+          contact.phoneIsPlaceholder ? (
+            <span class="rounded bg-red-500/15 px-2 py-1 font-mono text-red-600 dark:text-red-400">TODO: {contact.phone}</span>
+          ) : (
+            <a href={telHref} class="font-semibold">{contact.phone}</a>
+          )
+        }
+      </p>
+      <p class="text-[1.05rem]">
+        <a href={mailHref} class="inline-flex min-h-11 items-center font-semibold break-all text-accent underline underline-offset-4">{contact.email}</a>
+      </p>
+    </div>
+  </section>
+</Tutoring>
