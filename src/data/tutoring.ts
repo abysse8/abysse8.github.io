@@ -1,8 +1,8 @@
 // Tutoring page data (/cours, /tutoring). Edit rates and contact details here only.
 
-// TODO: replace with the real number, e.g. "06 12 34 56 78". While it stays
+// Phone number without braces, e.g. "06 12 34 56 78". While it is still
 // "{{PHONE}}", the pages show a visible TODO and the call/SMS buttons fall back to email.
-const PHONE = "{{07 75 85 70 82}}";
+const PHONE = "07 75 85 70 82";
 
 export const contact = {
   email: "julienabdougonzales@gmail.com",
