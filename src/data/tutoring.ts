@@ -2,7 +2,7 @@
 
 // TODO: replace with the real number, e.g. "06 12 34 56 78". While it stays
 // "{{PHONE}}", the pages show a visible TODO and the call/SMS buttons fall back to email.
-const PHONE = "{{PHONE}}";
+const PHONE = "{{+33 775857082}}";
 
 export const contact = {
   email: "julienabdougonzales@gmail.com",
