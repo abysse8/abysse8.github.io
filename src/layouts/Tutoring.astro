@@ -1,0 +1,67 @@
+---
+// Tutoring pages (/cours, /tutoring): same layout and tokens as the portfolio,
+// but warm and light by default for parents scanning a poster's QR code in
+// daylight, back to the site's dark tokens under prefers-color-scheme: dark.
+import Base from "./Base.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  lang: "fr" | "en";
+}
+const { title, description, lang } = Astro.props;
+const pages = { fr: "/cours/", en: "/tutoring/" };
+---
+
+<Base
+  title={title}
+  description={description}
+  lang={lang}
+  theme="tutoring"
+  og={{ locale: lang === "fr" ? "fr_FR" : "en_US" }}
+  alternates={[
+    { lang: "fr", href: pages.fr },
+    { lang: "en", href: pages.en },
+  ]}
+>
+  <nav slot="nav" class="flex items-center gap-1 font-mono text-sm" aria-label={lang === "fr" ? "Langue" : "Language"}>
+    {
+      (["fr", "en"] as const).map((l) => (
+        <a
+          href={pages[l]}
+          hreflang={l}
+          lang={l}
+          aria-current={l === lang ? "page" : undefined}
+          class:list={[
+            "inline-flex min-h-11 min-w-11 items-center justify-center rounded-md px-2",
+            l === lang ? "bg-accent-dim text-accent" : "text-muted hover:text-foreground",
+          ]}
+        >
+          {l.toUpperCase()}
+        </a>
+      ))
+    }
+  </nav>
+  <slot />
+</Base>
+
+<style is:global>
+  @media (prefers-color-scheme: light) {
+    html.tutoring {
+      color-scheme: light;
+      --color-bg: #fbf7f1;
+      --color-surface: #ffffff;
+      --color-surface-2: #f4ede2;
+      --color-border: #e9e0d2;
+      --color-border-strong: #d6c9b5;
+      --color-foreground: #24201b;
+      --color-muted: #5b544a;
+      --color-faint: #7a7166;
+      --color-accent: #9a5a08;
+      --color-accent-dim: rgba(154, 90, 8, 0.1);
+    }
+  }
+  html.tutoring body {
+    font-size: 1.0625rem;
+  }
+</style>
