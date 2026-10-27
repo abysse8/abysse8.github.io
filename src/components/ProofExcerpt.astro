@@ -1,0 +1,45 @@
+---
+// One proof from my own Analysis I write-ups (JHU AS.110.405, Fall 2023, HW 9),
+// re-typeset with KaTeX at build time. The theorem statement is reworded; the
+// proof text is mine, kept as written (see the PR for the two edits).
+import katex from "katex";
+import "katex/dist/katex.min.css";
+
+interface Props {
+  caption: string;
+}
+const { caption } = Astro.props;
+
+// $$…$$ → display math, $…$ → inline math.
+const tex = (s: string) =>
+  s
+    .replace(/\$\$(.+?)\$\$/gs, (_, m) => katex.renderToString(m, { displayMode: true }))
+    .replace(/\$(.+?)\$/g, (_, m) => katex.renderToString(m));
+
+const statement = tex(
+  "Let $f:\\mathbb{R}\\to\\mathbb{R}$ be differentiable. Then $f$ is Lipschitz continuous " +
+    "(there is a $K$ with $|f(x)-f(y)|\\le K|x-y|$ for all $x,y$) if and only if $f'$ is bounded.",
+);
+
+const proof = [
+  "To prove the forward direction, suppose that $f$ is differentiable and Lipschitz continuous. In particular, the quantity $$f'(a)=\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}$$ is well defined for all $a\\in\\mathbb{R}$.",
+  "Taking the absolute value of this quantity, we have $|f'(a)|=\\lim_{x\\to a}\\left|\\frac{f(x)-f(a)}{x-a}\\right|$. Recall that we can pass the absolute value inside the limit because it is everywhere continuous.",
+  "From the definition of Lipschitz continuity we have that for all $x,y\\in\\mathbb{R}$, $|f(x)-f(y)|\\le K|x-y|$ for some $K$. Further, for $x\\ne y$, we have that $\\frac{|f(x)-f(y)|}{|x-y|}\\le K$.",
+  "This applies, in particular, to all $x$ satisfying $0<|x-a|$ in our expression for the derivative at $a$. Hence, $$\\begin{aligned}|f'(a)|&=\\lim_{x\\to a}\\left|\\frac{f(x)-f(a)}{x-a}\\right|\\\\&\\le\\lim_{x\\to a}K=K.\\end{aligned}$$ Thus, $f'$ is bounded: in particular, by $K$.",
+  "Proving the reverse direction is less straightforward since it requires taking local information (the derivative at a point) to say something about non-local points of the function (arbitrary $x,y\\in\\mathbb{R}$). The mean value theorem will help us with this. Given any $x,y\\in\\mathbb{R}$ and $f$ is differentiable and continuous on $\\mathbb{R}$ (in particular, continuous on $[x,y]$ and differentiable on $(x,y)$), we know that there exists a $c\\in(x,y)$ such that $f(x)-f(y)=f'(c)(x-y)$.",
+  "Suppose now per assumption that $f'$ is bounded, that is, $|f'(x)|\\le M$ for all $x\\in\\mathbb{R}$, for some $M$. Taking the absolute value on both sides of our previous equality keeps it valid, such that $$\\begin{aligned}|f(x)-f(y)|&=|f'(c)|\\,|x-y|\\\\&\\le M|x-y|.\\end{aligned}$$ Thus $f$ is $M$-Lipschitz continuous, since it satisfies this condition for all $x,y$ in its domain.",
+].map(tex);
+---
+
+<figure class="m-0">
+  <div
+    lang="en"
+    class="rounded-xl border border-border bg-surface p-4 text-[0.95rem] leading-relaxed sm:p-7 [&_.katex-display>.katex]:text-[0.92em] sm:[&_.katex-display>.katex]:text-[1.1em]"
+  >
+    <p class="mb-3"><strong class="font-semibold">Theorem.</strong> <span set:html={statement} /></p>
+    <p class="mb-1 italic">Proof.</p>
+    {proof.map((p) => <p class="mb-3 text-muted [&_.katex]:text-foreground" set:html={p} />)}
+    <p class="text-right" aria-hidden="true">∎</p>
+  </div>
+  <figcaption class="mt-3 text-sm text-faint">{caption}</figcaption>
+</figure>

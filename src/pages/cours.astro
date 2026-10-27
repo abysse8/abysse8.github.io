@@ -1,0 +1,347 @@
+---
+import Tutoring from "../layouts/Tutoring.astro";
+import ProofExcerpt from "../components/ProofExcerpt.astro";
+import { contact, zones, rates, freeTrialMinutes, cancelNoticeHours, cesuUrl } from "../data/tutoring";
+
+const telHref = contact.phoneIsPlaceholder ? "#contact" : `tel:${contact.phoneHref}`;
+const smsHref = contact.phoneIsPlaceholder ? "#contact" : `sms:${contact.phoneHref}`;
+const mailHref = `mailto:${contact.email}?subject=${encodeURIComponent("Cours particuliers")}`;
+
+const subjects = [
+  { name: "Maths", levels: "Collège → L2 / prépa", detail: "Du calcul de base aux démonstrations d'analyse." },
+  { name: "Physique-chimie", levels: "Collège → lycée, physique L1", detail: "Comprendre le phénomène avant la formule." },
+  {
+    name: "Électronique",
+    levels: "STI2D / BTS, projets",
+    detail: "Soutien STI2D/BTS et projets Arduino / ESP32 pour ados curieux.",
+  },
+  { name: "Anglais", levels: "Anglais, maths en anglais", detail: "Pour sections internationales ou études à l'étranger." },
+];
+
+const method = [
+  ["Diagnostic de départ", "On repère ce qui est acquis et ce qui bloque vraiment, pas seulement le dernier contrôle."],
+  ["L'élève explique", "Il raisonne à voix haute. C'est là qu'on voit ce qu'il a compris et ce qu'il récite."],
+  ["Exercices ciblés", "Peu d'exercices, mais choisis pour le point qui bloque."],
+  ["Fiche récap", "À la fin de chaque cours, une fiche courte avec l'essentiel et ce qu'il faut refaire."],
+  ["Point avec les parents", "Un retour régulier sur les progrès et sur ce qui reste à travailler."],
+];
+
+const aiPractices = [
+  ["Comprendre, puis refaire seul", "Se faire expliquer une méthode étape par étape, puis refaire l'exercice seul, sans l'IA."],
+  ["Demander des contre-exemples", "Demander des contre-exemples et des exercices similaires pour vérifier qu'on a vraiment compris."],
+  ["Se faire relire", "Faire relire sa propre rédaction pour trouver ses erreurs, au lieu de demander la réponse."],
+];
+
+const faq = [
+  {
+    q: "Où se passent les cours ?",
+    a: `Chez vous, à ${zones[0]} et aux alentours (${zones.slice(1).join(", ")}…). J'habite à côté de la gare RER B Orsay-Ville.`,
+  },
+  {
+    q: "Des cours en visio sont-ils possibles ?",
+    a: "Oui, ponctuellement (avant un examen, en cas d'empêchement). Attention : le crédit d'impôt ne s'applique pas aux cours en visio.",
+  },
+  {
+    q: "Comment fonctionne le paiement par CESU ?",
+    a: "Vous me déclarez comme salarié sur le site du CESU (Urssaf) : vous indiquez les heures, l'Urssaf calcule les cotisations et me verse le salaire. Pas de contrat à rédiger.",
+  },
+  {
+    q: "Et le crédit d'impôt de 50 % ?",
+    a: "Les cours à domicile ouvrent droit à un crédit d'impôt de 50 %. Avec l'« avance immédiate » de l'Urssaf, il est déduit tout de suite : vous ne payez chaque mois que la moitié restante, sans attendre l'année suivante.",
+  },
+  {
+    q: "Et si on doit annuler ?",
+    a: `Prévenez-moi au moins ${cancelNoticeHours} h à l'avance et le cours n'est pas dû.`,
+  },
+  {
+    q: "À quelle fréquence ?",
+    a: "Le plus souvent une séance par semaine, plus régulière avant le brevet, le bac ou les partiels. On ajuste après le premier cours.",
+  },
+];
+
+const euro = (n: number) => `${n} €/h`;
+---
+
+<Tutoring
+  lang="fr"
+  title="Cours particuliers de maths, physique et électronique à Orsay"
+  description="Cours particuliers à domicile à Orsay et alentours : maths, physique-chimie et électronique, du collège au supérieur, en français ou en anglais. Paiement CESU, 50 % de crédit d'impôt."
+>
+  <!-- Hero -->
+  <section class="pt-16 pb-12 sm:pt-24">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <p class="font-mono text-xs tracking-[0.08em] text-accent uppercase">Orsay · Bures · Gif · Palaiseau · Les Ulis</p>
+      <h1 class="mt-4 mb-5 text-[clamp(1.9rem,6vw,3rem)] leading-[1.1] font-bold tracking-[-0.02em] text-balance">
+        Cours particuliers de maths, physique et électronique à Orsay
+      </h1>
+      <p class="mb-8 max-w-[48ch] text-[1.1rem] text-muted">
+        Collège, lycée, supérieur, en français ou en anglais, à domicile.
+        <strong class="font-semibold text-foreground">Premier cours de {freeTrialMinutes} minutes offert.</strong>
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a
+          href={telHref}
+          class:list={[
+            "inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-foreground px-5 text-base font-medium text-bg transition-opacity hover:opacity-85",
+            contact.phoneIsPlaceholder && "outline-2 outline-dashed outline-offset-2 outline-red-500",
+          ]}
+        >
+          Appeler ou envoyer un SMS
+          {contact.phoneIsPlaceholder && <span class="font-mono text-xs">(TODO {contact.phone})</span>}
+        </a>
+        <a
+          href={mailHref}
+          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-border-strong px-5 text-base font-medium transition-colors hover:bg-surface"
+        >
+          Écrire un e-mail
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Matières & niveaux -->
+  <section id="matieres" class="border-y border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-6 text-[1.6rem] font-semibold tracking-[-0.015em]">Matières et niveaux</h2>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {
+          subjects.map((s) => (
+            <li class="rounded-xl border border-border bg-surface p-5">
+              <b class="block text-lg font-semibold">{s.name}</b>
+              <span class="font-mono text-[0.8rem] text-accent">{s.levels}</span>
+              <p class="mt-2 text-[0.95rem] text-muted">{s.detail}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Tarifs -->
+  <section id="tarifs" class="py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-6 text-[1.6rem] font-semibold tracking-[-0.015em]">Tarifs</h2>
+      <div class="grid gap-3 sm:grid-cols-2">
+        {
+          rates.map((r) => (
+            <div class="rounded-xl border border-border bg-surface p-5">
+              <p class="text-[0.95rem] font-medium text-muted">{r.level.fr}</p>
+              <p class="mt-1 text-3xl font-bold tracking-tight">
+                {euro(r.net)} <span class="text-base font-normal text-muted">net</span>
+              </p>
+              <p class="mt-2 text-[0.95rem]">
+                Coût réel estimé après crédit d'impôt : <strong class="font-semibold">≈ {euro(r.afterCredit)}</strong>
+              </p>
+            </div>
+          ))
+        }
+      </div>
+      <ul class="mt-6 space-y-2 text-[0.95rem] text-muted">
+        <li>
+          <strong class="font-semibold text-foreground">Premier cours de {freeTrialMinutes} minutes offert</strong>, pour
+          faire connaissance et voir où en est l'élève.
+        </li>
+        <li>
+          Paiement par <strong class="font-semibold text-foreground">CESU</strong> : le tarif net est le salaire que je
+          reçois ; les cotisations sociales s'y ajoutent, puis 50 % de l'ensemble vous revient en crédit d'impôt.
+        </li>
+        <li>
+          Les coûts réels sont <strong class="font-semibold text-foreground">des estimations</strong> : vérifiez votre
+          cas sur <a href={cesuUrl} class="text-accent underline underline-offset-4">cesu.urssaf.fr</a>.
+        </li>
+        <li>Le crédit d'impôt ne s'applique qu'aux cours donnés à votre domicile, pas aux cours en visio.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Méthode -->
+  <section id="methode" class="border-y border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-6 text-[1.6rem] font-semibold tracking-[-0.015em]">Comment se passe un cours</h2>
+      <ol class="grid gap-3">
+        {
+          method.map(([title, text], i) => (
+            <li class="flex gap-4 rounded-xl border border-border bg-surface p-4">
+              <span class="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
+              <p class="text-[0.95rem] text-muted">
+                <strong class="font-semibold text-foreground">{title}.</strong> {text}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- IA -->
+  <section id="ia" class="py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">L'IA, bien utilisée</h2>
+      <p class="mb-6 max-w-[60ch] text-muted">
+        Beaucoup de parents craignent que leur enfant recopie les réponses de ChatGPT. L'outil est là de toute façon.
+        J'apprends à votre enfant à s'en servir comme d'un tuteur qui pose des questions, pas comme d'une machine à
+        réponses.
+      </p>
+      <ul class="grid gap-3 sm:grid-cols-3">
+        {
+          aiPractices.map(([title, text]) => (
+            <li class="rounded-xl border border-border bg-surface p-5">
+              <b class="block font-semibold">{title}</b>
+              <p class="mt-2 text-[0.95rem] text-muted">{text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Électronique -->
+  <section id="electronique" class="border-y border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">Électronique</h2>
+      <p class="mb-3 max-w-[60ch] text-muted">
+        Je travaille dans l'électronique embarquée pour les transports en commun : écrans de bus, cartes ESP32,
+        liaisons série. Pour les ados curieux, on monte de vrais projets (capteurs, LED, petits robots sur Arduino ou
+        ESP32) et on comprend ce qui se passe dans le circuit.
+      </p>
+      <p class="mb-6 max-w-[60ch] text-muted">
+        Pour les élèves de STI2D ou de BTS, soutien sur les cours et les projets : lois des circuits, programmation de
+        microcontrôleurs, mesures.
+      </p>
+      <div class="grid grid-cols-2 gap-3">
+        <img
+          src="/assets/hardware/lab-bench.webp"
+          width="1200"
+          height="1600"
+          loading="lazy"
+          alt="Panneaux LED de bus et oscilloscope sur l'établi"
+          class="aspect-[3/4] w-full rounded-xl border border-border object-cover"
+        />
+        <img
+          src="/assets/hardware/esp32-rig.webp"
+          width="1600"
+          height="1200"
+          loading="lazy"
+          alt="Panneau LED de bus piloté par une carte ESP32 branchée à un ordinateur portable"
+          class="aspect-[3/4] w-full rounded-xl border border-border object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Supérieur -->
+  <section id="superieur" class="py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">Pour les étudiants du supérieur</h2>
+      <p class="mb-6 max-w-[60ch] text-muted">
+        En L1/L2 (Université Paris-Saclay, prépa), la difficulté change : il ne suffit plus de savoir appliquer, il faut
+        justifier chaque étape. On travaille la rigueur : définitions précises, quantificateurs, démonstrations
+        complètes.
+      </p>
+      <ProofExcerpt
+        caption="En analyse rigoureuse, on démontre ce qu'on utilise. Extrait d'une démonstration que j'ai rédigée en cours d'analyse réelle à Johns Hopkins (2023), en anglais : « dérivée bornée » et « pente bornée » sont la même chose."
+      />
+      <p class="mt-8 mb-3 font-medium">Comment j'explique (articles en anglais) :</p>
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="/posts/2026-10-10-the-op-amp-breaks-the-symmetry-of-the-circuit-matrix/"
+            class="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
+            >L'ampli-op, ou comment une seule ligne casse la symétrie de la matrice d'un circuit →</a
+          >
+        </li>
+        <li>
+          <a
+            href="/posts/2026-10-12-a-photon-is-one-rung-of-one-mode/"
+            class="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
+            >Un photon, c'est un barreau sur l'échelle d'énergie d'un mode du champ →</a
+          >
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Qui je suis -->
+  <section id="qui" class="border-y border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">Qui je suis</h2>
+      <p class="max-w-[60ch] text-muted">
+        Je m'appelle Julien, j'ai 23 ans. Je suis apprenti ingénieur au CESI en systèmes électroniques embarqués et je
+        travaille dans l'électronique pour les transports en commun. Avant cela, j'ai étudié à l'université Johns
+        Hopkins, aux États-Unis, où j'ai suivi des cours de mathématiques avancés (analyse, niveau « honors »). Je suis
+        bilingue français-anglais et j'habite à Orsay.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-6 text-[1.6rem] font-semibold tracking-[-0.015em]">Questions fréquentes</h2>
+      <div class="divide-y divide-border rounded-xl border border-border bg-surface">
+        {
+          faq.map(({ q, a }) => (
+            <details class="group">
+              <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 px-5 py-3 font-medium">
+                {q}
+                <span class="text-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="px-5 pb-4 text-[0.95rem] text-muted">{a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="border-t border-border bg-surface-2/50 py-14">
+    <div class="mx-auto max-w-[900px] px-4 sm:px-6">
+      <h2 class="mb-4 text-[1.6rem] font-semibold tracking-[-0.015em]">Contact</h2>
+      <p class="mb-6 text-muted">
+        Appelez, envoyez un SMS ou un e-mail : dites-moi la classe, la matière et ce qui coince.
+      </p>
+      <dl class="mb-6 grid gap-2 text-[1.05rem]">
+        <div>
+          <dt class="sr-only">Téléphone</dt>
+          <dd>
+            {
+              contact.phoneIsPlaceholder ? (
+                <span class="rounded bg-red-500/15 px-2 py-1 font-mono text-red-600 dark:text-red-400">
+                  TODO : {contact.phone}
+                </span>
+              ) : (
+                <a href={telHref} class="font-semibold">
+                  {contact.phone}
+                </a>
+              )
+            }
+          </dd>
+        </div>
+        <div>
+          <dt class="sr-only">E-mail</dt>
+          <dd>
+            <a href={mailHref} class="inline-flex min-h-11 items-center font-semibold break-all text-accent underline underline-offset-4">{contact.email}</a>
+          </dd>
+        </div>
+      </dl>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a
+          href={telHref}
+          class="inline-flex min-h-12 items-center justify-center rounded-lg bg-foreground px-5 font-medium text-bg hover:opacity-85"
+          >Appeler</a
+        >
+        <a
+          href={smsHref}
+          class="inline-flex min-h-12 items-center justify-center rounded-lg border border-border-strong px-5 font-medium hover:bg-surface"
+          >Envoyer un SMS</a
+        >
+        <a
+          href={mailHref}
+          class="inline-flex min-h-12 items-center justify-center rounded-lg border border-border-strong px-5 font-medium hover:bg-surface"
+          >Écrire un e-mail</a
+        >
+      </div>
+    </div>
+  </section>
+</Tutoring>
